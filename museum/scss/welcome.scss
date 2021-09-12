@@ -1,0 +1,142 @@
+@import "mixins.scss";
+.header,
+.welcome {
+  background-color: $black;
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+  .header__logo-img {
+    max-height: auto;
+    max-width: 200px;
+  }
+  .header__nav {
+    flex-basis: 50%;
+
+    .header__menu {
+      display: flex;
+      justify-content: space-between;
+      .header__link {
+        @include font("Roboto", 22px, 26px, $white, 200);
+        opacity: 80%;
+        &:active {
+          color: $gold;
+        }
+        &:hover {
+          color: $gold;
+          opacity: 100%;
+          transition-duration: 0.2s;
+        }
+      }
+    }
+  }
+}
+
+.main .welcome {
+  padding-top: 0;
+}
+.welcome-inner {
+  position: relative;
+  height: 735px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) 30%,
+      rgba(0, 0, 0, 0) 60%
+    ),
+    url(/assets/img/welcome-slider/1.jpg) no-repeat;
+  background-position-x: 100%;
+  background-position-y: 100%;
+  .welcome__title {
+    @include font("Forum", 80px, 90px, $white);
+    margin-bottom: 25px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+  .welcome__subtitle {
+    @include font("Roboto", 28px, 33px, $white, 300);
+    margin-bottom: 75px;
+    letter-spacing: 2px;
+  }
+  .welcome-btn {
+    @include font("Roboto", 22px, 75px, $white, 300);
+    display: block;
+    height: 75px;
+    width: 360px;
+    background-color: $crimson;
+    border-radius: 10px;
+    text-align: center;
+
+    &:hover {
+      background-color: $gold;
+      transition-duration: 0.1s;
+    }
+  }
+  .welcome__slider {
+    @include disableSelection;
+    position: absolute;
+    right: 0;
+    bottom: -75px;
+    padding:50px 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    width: 600px;
+    background-color: $black;
+
+    .welcome__slider-counter{
+        @include font('Roboto',22px,40px,$white)
+    }
+    .squares{
+        width:180px;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .slider-square{
+      width: 16px;
+      height: 16px;
+      background-color: $white;
+      cursor: pointer;
+      &:hover:not(.active-square){
+          background-color: $gold;
+      }
+    }
+    .active-square {
+      background-color: #D2B183;
+    }
+    .arrows{
+        width: auto;
+    }
+    .welcome__arrow-left,.welcome__arrow-right{
+        display: inline-block;
+        width:30px;
+        height: 8px;
+        font-size: 25px;
+        color:$white;
+        &:hover{
+            cursor: pointer;
+            color: $gold;
+        }
+    }
+  }
+}
+.run-animation{
+  animation-name: smoothly;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+}
+@keyframes smoothly{
+  from{
+  background-position-x: 330%;
+  background-position-y: 100%;
+  }
+  to{
+  background-position-x: 100%;
+  background-position-y: 100%;
+  }
+}

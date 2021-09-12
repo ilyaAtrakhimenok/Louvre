@@ -1,0 +1,21 @@
+@mixin font($family, $size, $lineHeight, $color, $weight: normal) {
+  font-family: $family;
+  font-size: $size;
+  line-height: $lineHeight;
+  color: $color;
+  font-weight: $weight;
+}
+@mixin disableSelection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+$white: #fff;
+$gold: #9d8665;
+$crimson: #710707;
+$black: #000;
+$bgColGold: #9d8665;
+$bgColBlack: #000;
