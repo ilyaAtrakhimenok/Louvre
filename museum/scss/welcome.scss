@@ -36,10 +36,11 @@
 
 .main .welcome {
   padding-top: 0;
+  padding-bottom:60px;
 }
 .welcome-inner {
   position: relative;
-  height: 735px;
+  height: 750px;
   display: flex;
   align-items: center;
   background: linear-gradient(
@@ -79,7 +80,7 @@
     @include disableSelection;
     position: absolute;
     right: 0;
-    bottom: -75px;
+    bottom: -60px;
     padding:50px 75px;
     display: flex;
     justify-content: space-between;
