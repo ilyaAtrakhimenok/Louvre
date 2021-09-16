@@ -1,56 +1,25 @@
-@import "mixins.scss";
-.header,
 .welcome {
   background-color: $black;
 }
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 150px;
-  .header__logo-img {
-    max-height: auto;
-    max-width: 200px;
-  }
-  .header__nav {
-    flex-basis: 50%;
-
-    .header__menu {
-      display: flex;
-      justify-content: space-between;
-      .header__link {
-        @include font("Roboto", 22px, 26px, $white, 200);
-        opacity: 80%;
-        &:active {
-          color: $gold;
-        }
-        &:hover {
-          color: $gold;
-          opacity: 100%;
-          transition-duration: 0.2s;
-        }
-      }
-    }
-  }
-}
-
 .main .welcome {
   padding-top: 0;
-  padding-bottom:60px;
+  padding-bottom: 60px;
 }
 .welcome-inner {
   position: relative;
   height: 750px;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 1) 30%,
-      rgba(0, 0, 0, 0) 60%
-    ),
-    url(/assets/img/welcome-slider/1.jpg) no-repeat;
+  padding-top: 150px;
+  background-image: url(/museum/assets/img/welcome-slider/1.jpg);
   background-position-x: 100%;
   background-position-y: 100%;
+  background-repeat: no-repeat;
+  background-size: 1000px 750px;
+  .welcome__img {
+    display: none;
+  }
+  .welcome__text {
+    display: block;
+  }
   .welcome__title {
     @include font("Forum", 80px, 90px, $white);
     margin-bottom: 25px;
@@ -81,7 +50,7 @@
     position: absolute;
     right: 0;
     bottom: -60px;
-    padding:50px 75px;
+    padding: 50px 75px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,55 +58,163 @@
     width: 600px;
     background-color: $black;
 
-    .welcome__slider-counter{
-        @include font('Roboto',22px,40px,$white)
+    .welcome__slider-counter {
+      @include font("Roboto", 22px, 40px, $white);
     }
-    .squares{
-        width:180px;
-        display: flex;
-        justify-content: space-between;
-        
+    .squares {
+      width: 180px;
+      display: flex;
+      justify-content: space-between;
     }
-    .slider-square{
+    .slider-square {
       width: 16px;
       height: 16px;
       background-color: $white;
       cursor: pointer;
-      &:hover:not(.active-square){
-          background-color: $gold;
+      &:hover:not(.active-square) {
+        background-color: $gold;
       }
     }
     .active-square {
-      background-color: #D2B183;
+      background-color: #d2b183;
     }
-    .arrows{
-        width: auto;
+    .arrows {
+      width: auto;
     }
-    .welcome__arrow-left,.welcome__arrow-right{
-        display: inline-block;
-        width:30px;
-        height: 8px;
-        font-size: 25px;
-        color:$white;
-        &:hover{
-            cursor: pointer;
-            color: $gold;
-        }
+    .welcome__arrow-left,
+    .welcome__arrow-right {
+      display: inline-block;
+      width: 30px;
+      height: 8px;
+      font-size: 25px;
+      color: $white;
+      &:hover {
+        cursor: pointer;
+        color: $gold;
+      }
     }
   }
 }
-.run-animation{
-  animation-name: smoothly;
-  animation-duration: 0.7s;
-  animation-timing-function: ease-in-out;
-}
-@keyframes smoothly{
-  from{
-  background-position-x: 330%;
-  background-position-y: 100%;
+
+@media (max-width: 1024px) {
+  .welcome-inner {
+    height: 525px;
+    padding-top: 50px;
+    background-size: 700px 525px;
+    .welcome__text {
+      .welcome__title {
+        @include font("Forum", 50px, 90px, $white);
+      }
+      .welcome__subtitle {
+        @include font("Roboto", 24px, 28px, $white, 300);
+        margin-bottom: 50px;
+      }
+      .welcome-btn {
+        @include font("Roboto", 20px, 60px, $white, 300);
+        height: 60px;
+        width: 300px;
+      }
+    }
+    .welcome__slider {
+      padding: 40px 75px 40px 225px;
+      width: 700px;
+
+      .welcome__slider-counter {
+        @include font("Roboto", 20px, 40px, $white);
+      }
+      .squares {
+        width: 140px;
+      }
+      .slider-square {
+        width: 12px;
+        height: 12px;
+      }
+    }
   }
-  to{
-  background-position-x: 100%;
-  background-position-y: 100%;
+}
+
+@media (max-width: 768px) {
+  .main .welcome {
+    padding: 0;
+  }
+  .welcome-inner {
+    height: auto;
+    background-image: none;
+    background: none;
+    .welcome__img {
+      display: none;
+    }
+    .welcome__active {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .welcome__text {
+      text-align: center;
+      .welcome__title {
+        @include font("Forum", 40px, 60px, $white);
+      }
+      .welcome__subtitle {
+        @include font("Roboto", 20px, 24px, $white, 300);
+      }
+      .welcome-btn {
+        display: none;
+      }
+    }
+    .welcome__slider {
+      position: static;
+      padding: 0;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 100%;
+      justify-content: center;
+      .welcome__slider-counter {
+        @include font("Roboto", 20px, 40px, $white);
+      }
+      .squares {
+        width: 140px;
+        margin-left: 45px;
+        margin-right: 45px;
+      }
+      .slider-square {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .welcome-inner {
+    .welcome__text {
+      .welcome__title {
+        @include font("Forum", 28px, 40px, $white);
+      }
+      .welcome__subtitle {
+        @include font("Roboto", 16px, 19px, $white, 300);
+      }
+    }
+    .welcome__slider {
+      height: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      .welcome__slider-counter {
+        @include font("Roboto", 16px, 16px, $white);
+      }
+      .squares {
+        width: 75px;
+        margin-left: 25px;
+        margin-right: 25px;
+      }
+      .slider-square {
+        width: 7px;
+        height: 7px;
+      }
+      .welcome__arrow-left,
+      .welcome__arrow-right {
+        width: 20px;
+        font-size: 15px;
+      }
+    }
   }
 }

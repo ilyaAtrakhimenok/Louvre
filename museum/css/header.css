@@ -1,0 +1,116 @@
+.header {
+  background-color: #000;
+}
+
+.header-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 150px;
+}
+.header-inner .header__burger {
+  display: none;
+}
+.header-inner .header__logo-img {
+  max-height: auto;
+  max-width: 200px;
+}
+.header-inner .header__nav {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+.header-inner .header__nav .header__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.header-inner .header__nav .header__menu .header__link {
+  font-family: "Roboto";
+  font-size: 22px;
+  line-height: 26px;
+  color: #fff;
+  font-weight: 200;
+  opacity: 80%;
+}
+.header-inner .header__nav .header__menu .header__link:active {
+  color: #9d8665;
+}
+.header-inner .header__nav .header__menu .header__link:hover {
+  color: #9d8665;
+  opacity: 100%;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+@media (max-width: 1024px) {
+  .header-inner {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 130px;
+  }
+  .header-inner .header__burger {
+    display: block;
+    width: 18px;
+    height: 32px;
+    color: #fff;
+  }
+  .header-inner .header__logo-img {
+    max-height: auto;
+    max-width: 200px;
+  }
+  .header-inner .header__nav {
+    position: absolute;
+    left: 55px;
+    top: 165px;
+    height: 585px;
+    z-index: 10;
+  }
+  .header-inner .header__nav .header__menu {
+    height: 260px;
+    width: 120px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .header-inner .header__nav .header__menu .header__item {
+    position: relative;
+  }
+  .header-inner .header__nav .header__menu .header__item::after {
+    content: ">";
+    position: absolute;
+    right: 0;
+    top: 4px;
+    color: #fff;
+  }
+  .header-inner .header__nav .header__menu .header__link {
+    font-family: "Roboto";
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 300;
+  }
+}

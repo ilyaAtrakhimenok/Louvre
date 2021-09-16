@@ -16,8 +16,15 @@
       href="https://fonts.googleapis.com/css2?family=Forum&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/museum/css/reset.css" />
+    <link rel="stylesheet" href="/museum/css/style.css" />
   </head>
   <body>
     <header class="header" id="header">
@@ -33,6 +40,10 @@
               />
             </a>
           </div>
+          <div class="header__burger" id="header__burger">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="header__cancel" id="header__cancel">&#215;</div>
           <nav class="header__nav">
             <ul class="header__menu">
               <li class="header__item">
@@ -55,6 +66,61 @@
               </li>
             </ul>
           </nav>
+          <div class="header__imgs">
+            <img
+              class="header-img1"
+              src="/museum/assets/img/adaptive/adaptive1.png"
+              alt="menu picture"
+            />
+            <img
+              class="header-img2"
+              src="/museum/assets/img/adaptive/adaptive2.png"
+              alt="menu picture"
+            />
+            <img
+              class="header-img2"
+              src="/museum/assets/img/adaptive/adaptive3.png"
+              alt="menu picture"
+            />
+          </div>
+        </div>
+        <div class="header__contacts">
+          <ul class="media">
+            <li class="media__item">
+              <a class="media__link" href="https://www.youtube.com/user/louvre">
+                <span class="icon icon-youtube"></span>
+              </a>
+            </li>
+            <li class="media__item">
+              <a
+                class="media__link"
+                href="https://www.instagram.com/museelouvre/"
+              >
+                <span class="icon icon-instagram"></span>
+              </a>
+            </li>
+            <li class="media__item">
+              <a
+                class="media__link"
+                href="https://www.facebook.com/museedulouvre"
+              >
+                <span class="icon icon-facebook"></span>
+              </a>
+            </li>
+            <li class="media__item">
+              <a class="media__link" href="https://twitter.com/museelouvre">
+                <span class="icon icon-twitter"></span>
+              </a>
+            </li>
+            <li class="media__item">
+              <a
+                class="media__link"
+                href="https://www.pinterest.fr/museedulouvre/"
+              >
+                <span class="icon icon-pinterest"></span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </header>
@@ -68,18 +134,61 @@
                 to the Louvre
               </h1>
               <h3 class="welcome__subtitle">From the castle to the museum</h3>
-              <a href="#" class="welcome-btn" id="welcomeBtn"
+              <a
+                href="https://bit.ly/2YWwt2s"
+                class="welcome-btn"
+                id="welcomeBtn"
                 >Discover the Louvre</a
               >
             </div>
+            <img
+              class="welcome__active welcome__img"
+              src="/museum/assets/img/welcome-slider/1.jpg"
+              alt="welcome"
+            />
+            <img
+              class="welcome__img"
+              src="/museum/assets/img/welcome-slider/2.jpg"
+              alt="welcome"
+            />
+            <img
+              class="welcome__img"
+              src="/museum/assets/img/welcome-slider/3.jpg"
+              alt="welcome"
+            />
+            <img
+              class="welcome__img"
+              src="/museum/assets/img/welcome-slider/4.jpg"
+              alt="welcome"
+            />
+            <img
+              class="welcome__img"
+              src="/museum/assets/img/welcome-slider/5.jpg"
+              alt="welcome"
+            />
             <div class="welcome__slider">
               <div class="welcome__slider-counter">01 | 05</div>
               <div class="squares">
-                <div class="active-square slider-square run-animation" onclick="changeActiveElement(this)"></div>
-                <div class="slider-square" onclick="changeActiveElement(this)"></div>
-                <div class="slider-square" onclick="changeActiveElement(this)"></div>
-                <div class="slider-square" onclick="changeActiveElement(this)"></div>
-                <div class="slider-square" onclick="changeActiveElement(this)"></div>
+                <div
+                  class="active-square slider-square run-animation"
+                  onclick="changeActiveElement(this)"
+                ></div>
+                <div
+                  class="slider-square"
+                  onclick="changeActiveElement(this)"
+                ></div>
+                <div
+                  class="slider-square"
+                  onclick="changeActiveElement(this)"
+                ></div>
+                <div
+                  class="slider-square"
+                  onclick="changeActiveElement(this)"
+                ></div>
+                <div
+                  class="slider-square"
+                  onclick="changeActiveElement(this)"
+                ></div>
               </div>
               <div class="arrows">
                 <div class="welcome__arrow-left">&#10229;</div>
@@ -89,7 +198,117 @@
           </div>
         </div>
       </section>
-      <section class="visiting section" id="visiting"></section>
+      <section class="visiting section" id="visiting">
+        <div class="wrapper">
+          <h2 class="title">virtual tour</h2>
+          <div class="visiting-inner">
+            <a
+              class="visiting__panorama-link"
+              href="https://www.google.com/maps/@48.8603889,2.3386183,3a,75y,106.09h,90t/data=!3m8!1e1!3m6!1sAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo%3Dw203-h100-k-no-pi-0-ya269.67853-ro0-fo100!7i8704!8i4352"
+            >
+              <div class="visiting__card">
+                <img
+                  class="visiting__img"
+                  src="/museum/assets/img/virtual-tour/RoyalPalace.jpg"
+                  alt="Roal Place picture"
+                />
+                <h3 class="visiting__card-name underline-card">Royal Palace</h3>
+                <p class="visiting__card-subscibtion">
+                  360° Virtual Tour<br />
+                  <span>Google Street Panorama View</span>
+                </p>
+              </div>
+            </a>
+            <a
+              class="visiting__panorama-link"
+              href="https://www.google.com/maps/@48.8603889,2.3386183,3a,75y,106.09h,90t/data=!3m8!1e1!3m6!1sAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo%3Dw203-h100-k-no-pi-0-ya269.67853-ro0-fo100!7i8704!8i4352"
+            >
+              <div class="visiting__card">
+                <img
+                  class="visiting__img"
+                  src="/museum/assets/img/virtual-tour/DenonWing.jpg"
+                  alt="Denon Wing picture"
+                />
+                <h3 class="visiting__card-name underline-card">Denon Wing</h3>
+                <p class="visiting__card-subscibtion">
+                  360° Virtual Tour<br />
+                  <span>Google Street Panorama View</span>
+                </p>
+              </div>
+            </a>
+            <a
+              class="visiting__panorama-link"
+              href="https://www.google.com/maps/@48.8603889,2.3386183,3a,75y,106.09h,90t/data=!3m8!1e1!3m6!1sAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo%3Dw203-h100-k-no-pi-0-ya269.67853-ro0-fo100!7i8704!8i4352"
+            >
+              <div class="visiting__card">
+                <img
+                  class="visiting__img"
+                  src="/museum/assets/img/virtual-tour/ColonnadePerrault.jpg"
+                  alt="Colonnade Perrault picture"
+                />
+                <h3 class="visiting__card-name underline-card">
+                  Colonnade Perrault
+                </h3>
+                <p class="visiting__card-subscibtion">
+                  360° Virtual Tour<br />
+                  <span>Google Street Panorama View</span>
+                </p>
+              </div>
+            </a>
+            <a
+              class="visiting__panorama-link"
+              href="https://www.google.com/maps/@48.8603889,2.3386183,3a,75y,106.09h,90t/data=!3m8!1e1!3m6!1sAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo%3Dw203-h100-k-no-pi-0-ya269.67853-ro0-fo100!7i8704!8i4352"
+            >
+              <div class="visiting__card">
+                <img
+                  class="visiting__img"
+                  src="/museum/assets/img/virtual-tour/GreekHall.jpg"
+                  alt="Greek Hall picture"
+                />
+                <h3 class="visiting__card-name underline-card">Greek hall</h3>
+                <p class="visiting__card-subscibtion">
+                  360° Virtual Tour<br />
+                  <span>Google Street Panorama View</span>
+                </p>
+              </div>
+            </a>
+            <a
+              class="visiting__panorama-link"
+              href="https://www.google.com/maps/@48.8603889,2.3386183,3a,75y,106.09h,90t/data=!3m8!1e1!3m6!1sAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo%3Dw203-h100-k-no-pi-0-ya269.67853-ro0-fo100!7i8704!8i4352"
+            >
+              <div class="visiting__card">
+                <img
+                  class="visiting__img"
+                  src="/museum/assets/img/virtual-tour/MonaLisa.jpg"
+                  alt="Mona Lisa picture"
+                />
+                <h3 class="visiting__card-name underline-card">Mona Lisa</h3>
+                <p class="visiting__card-subscibtion">
+                  360° Virtual Tour<br />
+                  <span>Google Street Panorama View</span>
+                </p>
+              </div>
+            </a>
+            <a
+              class="visiting__panorama-link"
+              href="https://www.google.com/maps/@48.8603889,2.3386183,3a,75y,106.09h,90t/data=!3m8!1e1!3m6!1sAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPjObXeOBHNn2nU6seS_1WDYHt5JbkabhXJDvo%3Dw203-h100-k-no-pi-0-ya269.67853-ro0-fo100!7i8704!8i4352"
+            >
+              <div class="visiting__card">
+                <img
+                  class="visiting__img"
+                  src="/museum/assets/img/virtual-tour/NightPalace.jpg"
+                  alt="Night Palace picture"
+                />
+                <h3 class="visiting__card-name underline-card">Night Palace</h3>
+                <p class="visiting__card-subscibtion">
+                  360° Virtual Tour<br />
+                  <span>Google Street Panorama View</span>
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
       <section class="explore section" id="explore">
         <div class="wrapper"></div>
       </section>
@@ -106,9 +325,10 @@
         <div class="wrapper"></div>
       </section>
       <footer class="footer" id="footer">
-      <div class="wrapper"></div>
+        <div class="wrapper"></div>
       </footer>
-      <script src="/js/welcome.js"></script>
+      <script src="/museum/js/welcome.js" async></script>
+      <script src="/museum/js/header.js" async></script>
     </main>
   </body>
 </html>
