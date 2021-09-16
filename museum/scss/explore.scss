@@ -1,1 +1,82 @@
-@import "mixins.scss"
+@import "mixins.scss";
+
+.explore {
+  height: auto;
+  background-color: $black;
+  .explore__title {
+    color: $white;
+  }
+}
+.explore-inner {
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+  .explore__text {
+    @include font("Roboto", 22px, 38.5px, white, 300);
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 38px;
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+    span {
+      color: $gold;
+    }
+  }
+  .explore__slider {
+    @include disableSelection;
+    position: relative;
+    .explore__img-before,
+    .explore__img-after {
+      max-width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
+    .explore__img-after {
+      position: absolute;
+      clip: rect(0, 50%, 100%, 0px);
+    }
+    .explore__range {
+      position: absolute;
+      top: 0;
+      cursor: pointer;
+      .explore__range-img {
+        @include disableSelection;
+        max-height: 100%;
+        pointer-events: none;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .explore-inner {
+    display: block;
+    .explore__description {
+      margin-bottom: 60px;
+      .explore__text {
+        margin-bottom: 0;
+        &:last-child {
+          display: none;
+        }
+        br {
+          display: none;
+        }
+      }
+    }
+    .explore__slider {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .explore-inner {
+    .explore__description {
+        margin: 0;
+      .explore__text {
+        display: none;
+      }
+    }
+  }
+}

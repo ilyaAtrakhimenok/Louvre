@@ -42,7 +42,7 @@ function changeImg(direction) {
           { backgroundPositionX: "100%" },
         ],
         {
-          duration: 800,
+          duration: 700,
           easing: "ease-in-out",
         }
       );

@@ -103,7 +103,9 @@ window.addEventListener("click", function (event) {
   if (
     nav.style.display == "block" &&
     event.target.className != "header__item" &&
-    event.target.className != "fas fa-bars"
+    event.target.className != "fas fa-bars" &&
+    window.innerWidth < 1024
+
   ) {
     cancelMenu();
   }

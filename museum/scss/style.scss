@@ -8,31 +8,31 @@
 @import "contacts.scss";
 @import "gallery.scss";
 html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-.wrapper{
-    max-width: 1480px;
-    margin:0 auto;
-    padding-right: 20px;
-    padding-left:20px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
-.section{
-    padding-top:75px;
-    padding-bottom:75px;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
-.title{
-    @include font('Forum',50px,75px,$gold);
-    position: relative;
-    padding-bottom: 100px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+.wrapper {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+.title {
+  @include font("Forum", 80px, 90px, $gold);
+  position: relative;
+  padding-bottom: 100px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }
 .title:after {
   content: "";
@@ -42,4 +42,39 @@ html {
   bottom: 75px;
   height: 3px;
   background-color: $crimson;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .title {
+    @include font("Forum", 50px, 75px, $gold);
+    padding-bottom: 80px;
+  }
+  .title:after {
+    bottom: 60px;
+  }
+}
+
+
+@media (max-width: 768px){
+  .section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .title {
+    @include font("Forum", 40px, 60px, $gold);
+    padding-bottom: 60px;
+  }
+  .title:after {
+    bottom: 40px;
+  }
+}
+
+@media (max-width: 420px){
+  .title {
+    @include font("Forum", 28px, 40px, $gold);
+  }
 }

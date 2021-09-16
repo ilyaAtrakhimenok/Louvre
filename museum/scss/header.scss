@@ -200,3 +200,15 @@
     }
   }
 }
+@media (max-width:420px) {
+  .header {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+  .header-inner{
+      .header__logo-img {
+        max-height: auto;
+        max-width:130px;
+      }
+  }
+}
