@@ -9,7 +9,6 @@ let headerInner = document.querySelector(".header-inner");
 
 
 async function showMenu() {
-  console.log('showMenu');
   if (window.innerWidth > 768) {
     burger.style.display = "none";
     cancel.style.display = "block";
@@ -89,7 +88,6 @@ async function smoothlyHideNav(){
   }
 }
 function hideMenu() {
-  console.log('hidemenu');
   nav.style.display = "none";
   cancel.style.display = "none";
   burger.style.display = "block";

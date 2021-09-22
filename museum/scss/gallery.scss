@@ -1,1 +1,35 @@
-@import "mixins.scss"
+@import "mixins.scss";
+.gallery {
+  background: $black;
+  .gallery__title {
+    color: $white;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.picture-container {
+  position: relative;
+  height: 2000px;
+  overflow-y: hidden;
+  .shadow {
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  }
+  .picture-inner-container {
+    .gallery__img {
+      margin-left: 36px;
+      width: 30%;
+      margin-bottom: 24px;
+    }
+    .gallery__img:nth-child(1),
+    .gallery__img:nth-child(3) {
+      margin-top: 50px;
+    }
+  }
+
+}

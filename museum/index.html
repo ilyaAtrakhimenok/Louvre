@@ -332,20 +332,20 @@
             <div class="explore__slider">
               <img
                 class="explore__img-after"
-                src="/museum/assets/img/explore-slider/after.jpg"
+                src="/museum/assets/img/explore-slider/before.jpg"
                 alt="Las Meninas picture painting by Diego Velázquez"
               />
               <div class="explore__range">
                 <img
-                class="explore__range-img"
-                src="/museum/assets/svg/explore-slider.svg"
-                alt="elplore slider"
-              />
+                  class="explore__range-img"
+                  src="/museum/assets/svg/explore-slider.svg"
+                  alt="elplore slider"
+                />
               </div>
- 
+
               <img
                 class="explore__img-before"
-                src="/museum/assets/img/explore-slider/before.jpg"
+                src="/museum/assets/img/explore-slider/after.jpg"
                 alt="Las Meninas picture painting by Diego Velázquez"
               />
             </div>
@@ -353,11 +353,232 @@
         </div>
       </section>
       <section class="video section" id="video">
-        <div class="wrapper"></div>
+        <div class="wrapper">
+          <div class="video__caption">
+            <div class="video__title title">Video journey</div>
+            <div class="video__text">
+              Enter and visit one of the most famous museums in the world and
+              enjoy<br />
+              masterpieces such as Mona Lisa or Hammurabi's Code
+            </div>
+          </div>
+          <div class="courusel">
+            <div class="player">
+              <div class="player__video">
+                <video
+                  class="video__movie"
+                  src="/museum/assets/video/video.mp4"
+                  poster="/museum/assets/video/poster0.jpg"
+                ></video>
+                <img
+                  class="video__play__img"
+                  src="/museum/assets/svg/play__center.svg"
+                  alt="play icon"
+                />
+                <div class="player__controls">
+                  <button class="play-pause">►</button>
+                  <input
+                    class="progress-range range"
+                    id="progress"
+                    type="range"
+                    name="progress-range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="1"
+                  />
+                  <button class="volume">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <input
+                    class="volume-range range"
+                    id="volume"
+                    type="range"
+                    name="volume-range"
+                    min="0"
+                    max="100"
+                    value="50"
+                    step="1"
+                  />
+                  <button class="fullScreen">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <p class="loop plusFive">+5 sec &gt;&gt;</p>
+                <p class="loop minusFive">&lt;&lt; -5 sec</p>
+                <p class="speed">1x</p>
+              </div>
+            </div>
+
+            <div class="slider">
+              <div class="slider-content">
+                <div class="item active" onclick="changeActiveElementImg(this)">
+                  <iframe
+                    class="item__video"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/zp1BXPX8jcU"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="item" onclick="changeActiveElementImg(this)">
+                  <iframe
+                    class="item__video"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/Vi5D6FKhRmo"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="item" onclick="changeActiveElementImg(this)">
+                  <iframe
+                    class="item__video"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/NOhDysLnTvY"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="item" onclick="changeActiveElementImg(this)">
+                  <iframe
+                    class="item__video"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/aWmJ5DgyWPI"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="item" onclick="changeActiveElementImg(this)">
+                  <iframe
+                    class="item__video"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/2OR0OCr6uRE"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="slider-nav">
+                <div class="slider-nav__container">
+                  <button class="left-arrow">«</button>
+                  <button
+                    class="slider-dot active-dot"
+                    onclick="changeActiveElementDot(this)"
+                  ></button>
+                  <button
+                    class="slider-dot"
+                    onclick="changeActiveElementDot(this)"
+                  ></button>
+                  <button
+                    class="slider-dot"
+                    onclick="changeActiveElementDot(this)"
+                  ></button>
+                  <button
+                    class="slider-dot"
+                    onclick="changeActiveElementDot(this)"
+                  ></button>
+                  <button
+                    class="slider-dot"
+                    onclick="changeActiveElementDot(this)"
+                  ></button>
+                  <button class="right-arrow">»</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <sction class="gallery section" id="gallery">
-        <div class="wrapper"></div>
-      </sction>
+      <section class="gallery section" id="gallery">
+        <div class="wrapper">
+          <div class="gallery__title title">art gallery</div>
+          <div class="picture-container">
+            <div class="picture-inner-container js-masonry">
+              <img
+                src="/museum/assets/img/galery/galery2.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery1.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery3.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery4.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery5.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery6.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery7.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery8.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery9.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery10.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery11.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery12.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery13.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery14.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+              <img
+                src="/museum/assets/img/galery/galery15.jpg"
+                alt="gallety picture"
+                class="gallery__img"
+              />
+            </div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+      </section>
       <section class="tickets section" id="tickets">
         <div class="wrapper"></div>
       </section>
@@ -367,9 +588,14 @@
       <footer class="footer" id="footer">
         <div class="wrapper"></div>
       </footer>
-      <script src="/museum/js/welcome.js" async></script>
-      <script src="/museum/js/header.js" async></script>
-      <script src="/museum/js/explore.js" async></script>
+      <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+      <script src="/museum/js/gallery.js"></script>
+      <script src="/museum/js/welcome.js"></script>
+      <script src="/museum/js/header.js"></script>
+      <script src="/museum/js/explore.js"></script>
+      <script src="/museum/js/video.js"></script>
+      <script src="/museum/js/video__slider.js"></script>
+
     </main>
   </body>
 </html>

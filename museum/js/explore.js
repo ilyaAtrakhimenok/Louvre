@@ -5,8 +5,8 @@ let exploreRange = document.querySelector(".explore__range");
 let isMove = false;
 let pos = exploreSlider.getBoundingClientRect();
 function resizeExplore() {
-    console.log(afterImg.clientHeight);
-  afterImg.style.clip = `rect(0,${exploreSlider.clientWidth / 2}px,${
+  console.log('here')
+  afterImg.style.clip = `rect(0,${beforeImg.clientWidth / 2}px,${
     exploreSlider.clientHeight
   }px,0)`;
   exploreRange.style.left = `${exploreSlider.clientWidth / 2 - 20}px`;
