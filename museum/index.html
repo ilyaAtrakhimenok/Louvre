@@ -580,10 +580,265 @@
         </div>
       </section>
       <section class="tickets section" id="tickets">
-        <div class="wrapper"></div>
+        <div class="wrapper">
+          <h2 class="tickets__title title">buy tickets</h2>
+          <div class="tickets-inner">
+            <div class="tickets__picture">
+              <img
+                class="tickets__img"
+                src="/museum/assets/img/tickets.jpg"
+                alt="tickets picture"
+              />
+            </div>
+            <div class="tickets__type">
+              <div class="tickets__type-inner">
+                <h3 class="tickets__type-title">Ticket Type</h3>
+                <label class="tickets__container">
+                  <input type="radio" checked="checked" name="radio" />
+                  <span class="checkmark"></span>
+                  <span class="tickets__radio-text">Permanent exhibition</span>
+                </label>
+                <label class="tickets__container">
+                  <input type="radio" name="radio" />
+                  <span class="checkmark"></span>
+                  <span class="tickets__radio-text">Temporary exhibition</span>
+                </label>
+                <label class="tickets__container">
+                  <input type="radio" name="radio" />
+                  <span class="checkmark"></span>
+                  <span class="tickets__radio-text">Combined Admission</span>
+                </label>
+              </div>
+            </div>
+            <div class="tickets__amount">
+              <div class="tickets__amount-inner">
+                <h3 class="tickets__cost-title">Amount</h3>
+                <p class="tickets__age-text">Basic 18+</p>
+                <div class="tickets__amount-age">
+                  <button
+                    class="tickets__btn minus-basic"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    -
+                  </button>
+                  <input
+                    class="tickets__input input-basic"
+                    type="number"
+                    min="0"
+                    max="20"
+                    value="0"
+                    readonly
+                  />
+                  <button
+                    class="tickets__btn plus-basic"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    +
+                  </button>
+                </div>
+                <p class="tickets__age-text">Senior 65+</p>
+                <div class="tickets__amount-age">
+                  <button
+                    class="tickets__btn minus-senior"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    -
+                  </button>
+                  <input
+                    class="tickets__input input-senior"
+                    type="number"
+                    min="0"
+                    max="20"
+                    value="0"
+                    readonly
+                  />
+                  <button
+                    class="tickets__btn plus-senior"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    +
+                  </button>
+                </div>
+                <p class="tickets__total">Total €0</p>
+                <button class="tickets__total-btn">Buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+      <div class="modal">
+        <span class="close">&times;</span>
+        <div class="tickets__form">
+          <div class="tickets__form-booking">
+            <h4 class="booking-header">booking tickets</h4>
+            <div class="booking-forms">
+              <div class="booking-time-date">
+                <div class="booking-date">
+                  <input
+                    type="date"
+                    id="booking-date-form"
+                    class="form-icon form-arrow border-form"
+                  />
+                </div>
+                <div class="booking-time">
+                  <input
+                    type="time"
+                    id="booking-time-form"
+                    class="form-icon form-arrow border-form"
+                  />
+                </div>
+              </div>
+              <input
+                type="text"
+                name="booking name"
+                id="booking-name"
+                placeholder="Name"
+                class="form-icon booking-input border-form"
+              />
+              <input
+                type="email"
+                name="booking email"
+                id="booking-email"
+                placeholder="Email"
+                class="form-icon booking-input border-form"
+              />
+              <input
+                type="tel"
+                name="booking tel"
+                id="booking-tel"
+                placeholder="Phone"
+                class="form-icon booking-input border-form"
+              />
+              <select
+                name="tickets type"
+                id="booking-type"
+                class="form-icon booking-input form-arrow border-form"
+              >
+                <option>Tickets type</option>
+                <option>Permanent exhibition</option>
+                <option>Temporary exhibition</option>
+                <option>Combined Admission</option>
+              </select>
+            </div>
+            <div class="booking-entry border-form">
+              <h5 class="entry-title">Entry ticket</h5>
+              <div class="entry-basic">
+                <div class="entry-text">Basic 18+ (20 €)</div>
+                <div class="enrty-counter">
+                  <button
+                    class="tickets__btn minus-basic"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    -
+                  </button>
+                  <input
+                    class="tickets__input input-basic"
+                    type="number"
+                    min="0"
+                    max="20"
+                    value="0"
+                    readonly
+                  />
+                  <button
+                    class="tickets__btn plus-basic"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="entry-senior">
+                <div class="entry-text">Senior 65+ (10 €)</div>
+                <div class="enrty-counter">
+                  <button
+                    class="tickets__btn minus-senior"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    -
+                  </button>
+                  <input
+                    class="tickets__input input-senior"
+                    type="number"
+                    min="0"
+                    max="20"
+                    value="0"
+                    readonly
+                  />
+                  <button
+                    class="tickets__btn plus-senior"
+                    type="button"
+                    onclick="changeTicketsAmount(this)"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tickets__form-overview">
+            <div class="overview-info">
+              <h5 class="overview-title">Overview</h5>
+              <div class="overview-date">Friday, August 19</div>
+              <div class="overview-time">16:30</div>
+              <div class="overview-type">Temporary exhibition</div>
+            </div>
+            <div class="overview-cost">
+              <div class="overview-basic">
+                <div class="overview-basic-text">Basic (20 €)</div>
+                <div class="overview-basic-total">0 €</div>
+                <div class="overview-basic-amount">0</div>
+              </div>
+              <div class="overview-senior">
+                <div class="overview-senior-text">Senior (10 €)</div>
+                <div class="overview-senior-total">0 €</div>
+                <div class="overview-senior-amount">0</div>
+              </div>
+
+              <div class="overview-total">
+                <div class="overview-total-text">Total:</div>
+                <div class="overview-total-total">0 €</div>
+              </div>
+            </div>
+            <div class="overview-cards">
+              <img
+                src="/museum/assets/img/back.jpg"
+                alt="back card"
+                class="back-card"
+              />
+              <img
+                src="/museum/assets/img/forward.jpg"
+                alt="forward card"
+                class="forward-card"
+              />
+            </div>
+            <button id="overview-book">Book</button>
+          </div>
+        </div>
+      </div>
       <section class="contacts section" id="contacts">
-        <div class="wrapper"></div>
+        <div class="wrapper">
+          <h2 class="contacts-title title">contacts</h2>
+          <div class="contacts-inner">
+            <div class="contacts__info">
+              <h3 class="info-title"></h3>
+              <ul>
+                <li class="info-item">address 75001 Paris, France</li>
+                <li class="info-item">phone: +33(0) 1 40 20 50 50</li>
+                <li class="info-item">mail: info@louvre.fr</li>
+              </ul>
+            </div>
+            <div class="contacts__map">
+              <img src="/museum/assets/img/map.png" alt="map" class="map-img">
+            </div>
+          </div>
+        </div>
       </section>
       <footer class="footer" id="footer">
         <div class="wrapper"></div>
@@ -595,7 +850,7 @@
       <script src="/museum/js/explore.js"></script>
       <script src="/museum/js/video.js"></script>
       <script src="/museum/js/video__slider.js"></script>
-
+      <script src="/museum/js/tickets.js"></script>
     </main>
   </body>
 </html>

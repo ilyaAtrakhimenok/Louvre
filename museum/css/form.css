@@ -1,0 +1,22 @@
+.tickets__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tickets__form .tickets__form-booking {
+  width: 400px;
+  height: 660px;
+  margin-right: 40px;
+}
+.tickets__form .tickets__form-overview {
+  width: 530px;
+  height: 660px;
+  padding: 25px 30px 30px 25px;
+  border: 1px solid #303030;
+}
