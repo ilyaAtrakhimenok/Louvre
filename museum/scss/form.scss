@@ -13,10 +13,10 @@
   background-color: rgba(0, 0, 0, 0.9);
   .close {
     position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
+    top:25px;
+    right: 30px;
+    color: #303030;
+    font-size: 45px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -29,7 +29,7 @@
   align-items: center;
   width: auto;
   height: auto;
-  padding: 20px;
+  padding: 75px 25px 30px 25px;
   background: white;
   .border-form {
     border: 1px solid #303030;
@@ -345,5 +345,96 @@
   to {
     transform: scale(4);
     opacity: 0;
+  }
+}
+
+@media (max-width: 1140px) {
+  .tickets__form {
+    display: block;
+    max-width: 590px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+    width: 100vw; /* viewport width */
+    height: 100vh; /* viewport height */
+    .tickets__form-booking {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 50px;
+      .booking-header {
+        &::after {
+          width: 100%;
+        }
+      }
+      .booking-forms {
+        .booking-time-date {
+          #booking-date-form,
+          #booking-time-form {
+            width: 250px;
+            height: 45px;
+          }
+        }
+      }
+    }
+    .tickets__form-overview {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 710px) {
+  .tickets__form {
+    display: block;
+    max-width: 420px;
+    .tickets__form-booking {
+      width: 100%;
+      height: auto;
+      margin-right: 0;
+      margin-bottom: 50px;
+      .booking-header {
+        @include font("Forum", 32px, 35px, $gold, 400);
+        &::after {
+          width: 100%;
+        }
+      }
+      .booking-forms {
+        .booking-time-date {
+          display: block;
+          #booking-date-form {
+            margin-bottom: 20px;
+          }
+          #booking-date-form,
+          #booking-time-form {
+            width: 100%;
+            height: 45px;
+            background-position: 15px 15px, 95% 14px;
+          }
+        }
+      }
+      .booking-entry {
+        .tickets__input {
+          width: 40px;
+        }
+      }
+    }
+    .tickets__form-overview {
+      width: 100%;
+      height: auto;
+      padding-bottom: 100px;
+      .overview-cards {
+        position: static;
+        display: block;
+        .forward-card {
+          max-width: 100%;
+          position: static;
+          display: block;
+        }
+        .back-card {
+          max-width: 100%;
+          position: static;
+          display: block;
+          margin-bottom: 25px;
+        }
+      }
+    }
   }
 }

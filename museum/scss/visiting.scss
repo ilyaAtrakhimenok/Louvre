@@ -55,6 +55,7 @@
     grid-row-gap: 60px;
   }
   .visiting__card {
+    max-width: 330px;
     .visiting__card-name {
       @include font("Forum", 28px, 31px, black);
       &::after {

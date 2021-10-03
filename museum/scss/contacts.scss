@@ -1,20 +1,76 @@
 @import "mixins.scss";
 
-.contacts{
-    display: none;
+.contacts-inner {
+  display: flex;
+  justify-content: space-between;
+  .contacts__info {
+    min-width: 285px;
+  }
+  .info-title {
+    @include font("Roboto", 28px, 33px, $black, 500);
+    margin-bottom: 50px;
+  }
+  .info-item,
+  .info-link {
+    @include font("Roboto", 22px, 26px, $black, 300);
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+  .map-img {
+    width: 100%;
+    height: auto;
+  }
 }
-.contacts-inner{
-    display: flex;
-    justify-content: space-between;
-    .info-title{
-        @include font('Roboto', 28px, 33px, $black, 500);
-        margin-bottom: 50px;
-    }
-    .info-item, .info-link{
-        @include font('Roboto', 22px, 26px, $black, 300);
-        &:not(:last-child){
-            margin-bottom: 25px;
-        }
-    }
 
+@media (max-width: 1024px) {
+  .contacts-inner {
+    .contacts__info {
+      min-width: 275px;
+    }
+    .info-title {
+      @include font("Roboto", 24px, 28px, $black, 500);
+      margin-bottom: 35px;
+    }
+    .info-item,
+    .info-link {
+      @include font("Roboto", 20px, 24px, $black, 300);
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+    .map-img {
+      max-width: 700px;
+      height: auto;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .contacts-inner {
+      display: block;
+    .contacts__info {
+        margin-bottom: 40px;
+        text-align: left;
+    }
+    .info-title {
+      @include font("Roboto", 20px, 24px, $black, 500);
+      margin-bottom: 40px;
+    }
+    .info-item,
+    .info-link {
+      @include font("Roboto", 18px, 21px, $black, 300);
+    }
+  }
+}
+@media (max-width: 420px) {
+  .contacts-inner {
+    .info-title {
+      @include font("Roboto", 16px, 19px, $black, 500);
+      margin-bottom: 40px;
+    }
+    .info-item,
+    .info-link {
+      @include font("Roboto", 16px, 19px, $black, 300);
+    }
+  }
 }

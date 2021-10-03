@@ -48,7 +48,6 @@ function masn() {
 }
 
 shuffle(galleryImgs);
-
 for (let i = 0; i < picAll.length; i++) {
   picAll[i].src = `assets/img/galery/${galleryImgs[i]}`;
 }
