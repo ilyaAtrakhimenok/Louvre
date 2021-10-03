@@ -29,7 +29,7 @@
     max-width: 200px;
   }
   .header__nav {
-    flex-basis: 50%;
+    flex-basis: 55%;
 
     .header__menu {
       display: flex;
@@ -162,53 +162,53 @@
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.5);
   }
-  .media {
-    display: flex;
-    width: 340px;
-    justify-content: space-between;
-    .icon {
-      display: inline-block;
-      width: 48px;
-      height: 48px;
-      background-size: cover;
-      &:hover,
-      &:focus {
-        filter: invert(61%) sepia(15%) saturate(758%) hue-rotate(356deg)
-          brightness(86%) contrast(85%);
-      }
+}
+.media {
+  display: flex;
+  width: 340px;
+  justify-content: space-between;
+  .icon {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    &:hover,
+    &:focus {
+      filter: invert(61%) sepia(15%) saturate(758%) hue-rotate(356deg)
+        brightness(86%) contrast(85%);
     }
-    .icon-youtube {
-      background-image: url(/museum/assets/svg/Youtube.svg);
-    }
-    .icon-twitter {
-      background-image: url(/museum/assets/svg/Twitter.svg);
-    }
-    .icon-instagram {
-      background-image: url(/museum/assets/svg/Instagram.svg);
-    }
-    .icon-facebook {
-      background-image: url(/museum/assets/svg/Facebook.svg);
-    }
-    .icon-pinterest {
-      background-image: url(/museum/assets/svg/Pinterest.svg);
-    }
-    .media__item {
-      display: inline-block;
-      &:hover {
-        cursor: pointer;
-      }
+  }
+  .icon-youtube {
+    background-image: url(../assets/svg/Youtube.svg);
+  }
+  .icon-twitter {
+    background-image: url(../assets/svg/Twitter.svg);
+  }
+  .icon-instagram {
+    background-image: url(../assets/svg/Instagram.svg);
+  }
+  .icon-facebook {
+    background-image: url(../assets/svg/Facebook.svg);
+  }
+  .icon-pinterest {
+    background-image: url(../assets/svg/Pinterest.svg);
+  }
+  .media__item {
+    display: inline-block;
+    &:hover {
+      cursor: pointer;
     }
   }
 }
-@media (max-width:420px) {
+@media (max-width: 420px) {
   .header {
     padding-top: 35px;
     padding-bottom: 35px;
   }
-  .header-inner{
-      .header__logo-img {
-        max-height: auto;
-        max-width:130px;
-      }
+  .header-inner {
+    .header__logo-img {
+      max-height: auto;
+      max-width: 130px;
+    }
   }
 }

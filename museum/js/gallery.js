@@ -1,5 +1,5 @@
 let picture = document.querySelector(".picture-inner-container");
-let picAll = document.querySelectorAll('.gallery__img');
+let picAll = document.querySelectorAll(".gallery__img");
 let galleryImgs = [
   "galery1.jpg",
   "galery2.jpg",
@@ -23,15 +23,38 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+function masn() {
+  var elem = document.querySelector(".picture-inner-container");
+  if (window.innerWidth > 800) {
+    var msnry = new Masonry(elem, {
+      itemSelector: ".gallery__img",
+      columnWidth: picture.clientWidth / 3,
+      horizontalOrder: true,
+    });
+    for(let i = 0; i < picAll.length; i++){
+      picAll[i].width =picture.clientWidth / 3 - 36;
+    }
+  } else {
+    var msnry = new Masonry(elem, {
+      itemSelector: ".gallery__img",
+      columnWidth: picture.clientWidth / 2,
+      horizontalOrder: true,
+    });
+   for(let i = 0; i < picAll.length; i++){
+     picAll[i].width = picture.clientWidth / 2 - 16;
+   }
+  }
+
+}
+
 shuffle(galleryImgs);
 
-
-let msnry = new Masonry(picture, {
-    itemSelector: "gallery__img",
-    columnWidth: 456,
-    horizontalOrder: true,
-  });
-
-for(let i = 0; i < picAll.length; i++){
-    picAll[i].src = `/museum/assets/img/galery/${galleryImgs[i]}`;
+for (let i = 0; i < picAll.length; i++) {
+  picAll[i].src = `assets/img/galery/${galleryImgs[i]}`;
 }
+picAll[0].style.marginTop = "50px";
+picAll[10].style.marginTop = "50px";
+masn();
+window.addEventListener('resize', masn);
+
+

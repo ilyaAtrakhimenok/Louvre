@@ -8,6 +8,8 @@
 @import "contacts.scss";
 @import "gallery.scss";
 @import "form.scss";
+@import "footer.scss";
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -44,7 +46,20 @@ html {
   height: 3px;
   background-color: $crimson;
 }
+.parallax {
+  /* The image used */
+  background-image: url("../assets/img/parallax.jpg");
 
+  /* Full height */
+  /* Set a specific height */
+  height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 @media (max-width: 1024px) {
   .section {
     padding-top: 60px;
@@ -57,10 +72,13 @@ html {
   .title:after {
     bottom: 60px;
   }
+  
 }
 
-
-@media (max-width: 768px){
+@media (max-width: 768px) {
+  .parallax {
+    height: 300px;
+  }
   .section {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -74,7 +92,10 @@ html {
   }
 }
 
-@media (max-width: 420px){
+@media (max-width: 420px) {
+  .parallax {
+    height: 300px;
+  }
   .title {
     @include font("Forum", 28px, 40px, $gold);
   }

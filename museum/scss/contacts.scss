@@ -1,1 +1,20 @@
-@import "mixins.scss"
+@import "mixins.scss";
+
+.contacts{
+    display: none;
+}
+.contacts-inner{
+    display: flex;
+    justify-content: space-between;
+    .info-title{
+        @include font('Roboto', 28px, 33px, $black, 500);
+        margin-bottom: 50px;
+    }
+    .info-item, .info-link{
+        @include font('Roboto', 22px, 26px, $black, 300);
+        &:not(:last-child){
+            margin-bottom: 25px;
+        }
+    }
+
+}

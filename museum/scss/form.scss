@@ -45,7 +45,7 @@
       padding-top: 40px;
       margin-bottom: 40px;
       text-transform: uppercase;
-      background-image: url(/museum/assets/svg/booking-logo.svg);
+      background-image: url(../assets/svg/booking-logo.svg);
       background-position-y: top;
       background-repeat: no-repeat;
       &::after {
@@ -91,8 +91,8 @@
 
         #booking-date-form {
           position: relative;
-          background-image: url(/museum/assets/svg/forms/date.svg),
-            url(/museum/assets/svg/forms/arrow.svg);
+          background-image: url(../assets/svg/forms/date.svg),
+            url(../assets/svg/forms/arrow.svg);
           background-repeat: no-repeat;
           background-size: 15px 15px, 17px 17px;
           background-position: 15px 15px, 155px 14px;
@@ -105,8 +105,8 @@
         }
 
         #booking-time-form {
-          background-image: url(/museum/assets/svg/forms/time.svg),
-            url(/museum/assets/svg/forms/arrow.svg);
+          background-image: url(../assets/svg/forms/time.svg),
+            url(../assets/svg/forms/arrow.svg);
           background-repeat: no-repeat;
           background-size: 15px 15px, 17px 17px;
           background-position: 15px 15px, 155px 14px;
@@ -139,23 +139,23 @@
         padding-left: 45px;
       }
       #booking-name {
-        background-image: url(/museum/assets/svg/forms/name.svg);
+        background-image: url(../assets/svg/forms/name.svg);
         background-position: 15px 12px;
       }
       #booking-email {
-        background-image: url(/museum/assets/svg/forms/email.svg);
+        background-image: url(../assets/svg/forms/email.svg);
         background-position: 15px 12.5px;
       }
       #booking-tel {
-        background-image: url(/museum/assets/svg/forms/tel.svg);
+        background-image: url(../assets/svg/forms/tel.svg);
         background-position: 15px 12px;
       }
       #booking-type {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background-image: url(/museum/assets/svg/forms/ballot.svg),
-          url(/museum/assets/svg/forms/arrow.svg);
+        background-image: url(../assets/svg/forms/ballot.svg),
+          url(../assets/svg/forms/arrow.svg);
         background-repeat: no-repeat;
         background-size: 15px 13px, 17px 17px;
         background-position: 15px 15px, 95% 14px;
@@ -244,13 +244,13 @@
         margin-bottom: 8px;
       }
       .overview-date {
-        background-image: url(/museum/assets/svg/forms/date.svg);
+        background-image: url(../assets/svg/forms/date.svg);
       }
       .overview-time {
-        background-image: url(/museum/assets/svg/forms/time.svg);
+        background-image: url(../assets/svg/forms/time.svg);
       }
       .overview-type {
-        background-image: url(/museum/assets/svg/forms/check_circle_outline.svg);
+        background-image: url(../assets/svg/forms/check_circle_outline.svg);
       }
     }
     .overview-cost {
@@ -265,7 +265,8 @@
         padding-left: 40px;
         --basicTicketsAmount: "0";
         --seniorTicketsAmount: "0";
-        .overview-basic-amount, .overview-senior-amount {
+        .overview-basic-amount,
+        .overview-senior-amount {
           @include font("Roboto", 18px, 21px, black, 400);
           position: absolute;
           left: 0;
@@ -317,6 +318,7 @@
     #overview-book {
       @include font("Roboto", 22px, 26px, white, 400);
       position: absolute;
+      overflow: hidden;
       right: 30px;
       bottom: 25px;
       width: 220px;
@@ -329,6 +331,19 @@
       &:hover {
         background-color: $gold;
       }
+      .ripple {
+        position: absolute; /* The absolute position we mentioned earlier */
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 600ms linear;
+        background-color: $white;
+      }
     }
+  }
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
   }
 }

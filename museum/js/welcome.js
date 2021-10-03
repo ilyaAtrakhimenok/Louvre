@@ -23,7 +23,7 @@ function changeImg(direction) {
   clearTimeout(timerId);
   let activeIndex = findActiveIndex(squares, "active-square");
   if (window.innerWidth > 768) {
-    welcomeInner.style.backgroundImage = `url(/museum/assets/img/welcome-slider/${imgs[activeIndex]})`;
+    welcomeInner.style.backgroundImage = `url(assets/img/welcome-slider/${imgs[activeIndex]})`;
     if (direction == "left") {
       welcomeInner.animate(
         [
@@ -136,6 +136,7 @@ function mouseUp(event) {
   if (leftX - rightX > 200) movePrev();
   else if (rightX - leftX > 200) moveNext();
 }
+changeImg('left');
 controlShadow();
 window.addEventListener("resize", controlShadow);
 rightArrow.addEventListener("click", moveNext);

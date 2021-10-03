@@ -12,6 +12,7 @@ let speed = document.querySelector('.speed');
 let videoPlayBtn = document.querySelector('.video__play__img')
 let timeoutMouseMove = null;
 let timeoutSpeed = null;
+
 function changeRangeProgress(range) {
   if (range == "volume") {
     if (volume.value == 0)
@@ -145,10 +146,10 @@ function procKeyPress(key) {
   }
 }
 videoPlayBtn.addEventListener('mouseover',()=>{
-  videoPlayBtn.src = '/museum/assets/svg/play__center_hover.svg'
+  videoPlayBtn.src = 'assets/svg/play__center_hover.svg'
 })
 videoPlayBtn.addEventListener('mouseout',()=>{
-  videoPlayBtn.src = '/museum/assets/svg/play__center.svg'
+  videoPlayBtn.src = 'assets/svg/play__center.svg'
 })
 progress.addEventListener("mousemove", () => changeRangeProgress("progress"));
 video.addEventListener("timeupdate", playProc);

@@ -3,6 +3,12 @@
 .tickets-inner {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
+  .tickets__picture {
+    .tickets__img {
+      width: 100%;
+      height: auto;
+    }
+  }
   .tickets__type-title,
   .tickets__cost-title,
   .tickets__total {
@@ -49,10 +55,10 @@
         input[type="radio"]:checked + .checkmark:after {
           display: block;
         }
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
-        &:not(:last-child){
+        &:not(:last-child) {
           margin-bottom: 25px;
         }
       }
@@ -70,7 +76,7 @@
       display: inline-block;
       .tickets__age-text {
         margin-bottom: 15px;
-        text-align: start;
+        text-align: center;
       }
       .tickets__cost-title {
         text-align: end;
@@ -78,12 +84,13 @@
       }
       .tickets__total {
         margin-top: 50px;
-        text-align: center;
+        text-align: end;
       }
       .tickets__amount-age {
         position: relative;
         display: flex;
         flex-direction: row;
+        justify-content: end;
         margin-bottom: 10px;
         .tickets__input {
           display: inline-block;
@@ -110,16 +117,86 @@
         color: $white;
         transition-duration: 0.2s;
         transition-timing-function: ease-out;
-        &:hover{
+        &:hover {
           background-color: $gold;
           color: $black;
         }
       }
-      .plus-senior,.plus-basic {
+      .plus-senior,
+      .plus-basic {
         border-left: none;
       }
-      .minus-senior, .minus-basic {
+      .minus-senior,
+      .minus-basic {
         border-right: none;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .tickets-inner {
+    grid-template-columns: 1fr 0fr 1fr;
+    justify-items: center;
+
+    .tickets__type {
+      .tickets__type-inner {
+        display: none;
+      }
+    }
+    .tickets__amount {
+      .tickets__amount-inner {
+        .tickets__total {
+          margin-top: 25px;
+        }
+        .tickets__amount-age {
+          .tickets__input {
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tickets-inner {
+    .tickets__amount {
+      .tickets__amount-inner {
+        .tickets__total-btn {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .tickets-inner {
+    display: block;
+    .tickets__picture {
+      .tickets__img {
+        max-height: 160px;
+        width: 100%;
+      }
+    }
+    .tickets__amount {
+      margin-top: 40px;
+      align-items: center;
+      .tickets__amount-inner {
+        .tickets__cost-title{
+          text-align: center;
+        }
+        .tickets__age-text{
+          text-align: start;
+        }
+        .tickets__total {
+          text-align: center;
+          margin-top: 25px;
+        }
+        .tickets__amount-age {
+          .tickets__input {
+            font-size: 34px;
+          }
+        }
       }
     }
   }

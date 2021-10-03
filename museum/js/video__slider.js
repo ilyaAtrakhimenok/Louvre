@@ -5,21 +5,19 @@ let rightArrowVideo = document.querySelector(".right-arrow");
 let movie = document.querySelector(".video__movie");
 let progRange = document.querySelector(".progress-range");
 let videoWidth = 450;
-hideSliders(findActiveIndex(sliders, "active"));
-resize();
 let videos = [
-  "/museum/assets/video/video.mp4",
-  "/museum/assets/video/video1.mp4",
-  "/museum/assets/video/video2.mp4",
-  "/museum/assets/video/video3.mp4",
-  "/museum/assets/video/video4.mp4",
+  "assets/video/video.mp4",
+  "assets/video/video1.mp4",
+  "assets/video/video2.mp4",
+  "assets/video/video3.mp4",
+  "assets/video/video4.mp4",
 ];
 let posters = [
-  "/museum/assets/video/poster0.jpg",
-  "/museum/assets/video/poster1.jpg",
-  "/museum/assets/video/poster2.jpg",
-  "/museum/assets/video/poster3.jpg",
-  "/museum/assets/video/poster4.jpg",
+  "assets/video/poster0.jpg",
+  "assets/video/poster1.jpg",
+  "assets/video/poster2.jpg",
+  "assets/video/poster3.jpg",
+  "assets/video/poster4.jpg",
 ];
 function changeVideo() {
   movie.src = videos[findActiveIndex(sliders, "active")];
@@ -100,7 +98,7 @@ function changeActiveElementImg(elem) {
   changeVideo();
 }
 function hideSliders(activeIndex) {
-  if (window.innerWidth > 768) {
+  if (movie.clientWidth > 768) {
     if (activeIndex == 0) {
       for (let i = 0; i < sliders.length; i++) {
         if (i != activeIndex && i != activeIndex + 1 && i != activeIndex + 2) {
@@ -155,27 +153,28 @@ function hideSliders(activeIndex) {
   }
 }
 function resize() {
-  if (window.innerWidth > 768 && window.innerWidth < 1480) {
-      sliders.forEach((item) => {
-        item.style.width = `${(window.innerWidth * videoWidth) / 1480}px`;
-        console.log('1000',item.style.width);
-        item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
-      });
-  } else if (window.innerWidth > 480 && window.innerWidth < 768) {
+  if (movie.clientWidth > 768 && movie.clientWidth < 1480) {
     sliders.forEach((item) => {
-      item.style.width = `${(window.innerWidth * (videoWidth - 100)) / 768}px`;
-      console.log('480-768', item.style.width);
+      item.style.width = `${(movie.clientWidth * videoWidth) / 1480}px`;
       item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
     });
-  } else if (window.innerWidth < 480) {
+  }
+  if (movie.clientWidth > 480 && movie.clientWidth < 768) {
     sliders.forEach((item) => {
-      item.style.width = `${(window.innerWidth * (videoWidth - 250)) / 480}px`;
-      console.log('480', item.style.width);
+      item.style.width = `${(movie.clientWidth * (videoWidth - 90)) / 768}px`;
+      item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
+    });
+  }
+  if (movie.clientWidth < 480) {
+    sliders.forEach((item) => {
+      item.style.width = `${(movie.clientWidth * (videoWidth - 220)) / 480}px`;
       item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
     });
   }
   hideSliders(findActiveIndex(sliders, "active"));
 }
+hideSliders(findActiveIndex(sliders, "active"));
+resize();
 window.addEventListener("resize", resize);
 rightArrowVideo.addEventListener("click", moveNext);
 leftArrowVideo.addEventListener("click", movePrev);
