@@ -46,6 +46,11 @@
   }
 }
 @media (max-width: 768px) {
+  .main{
+    .contacts{
+      padding-bottom:70px;
+    }
+  }
   .contacts-inner {
       display: block;
     .contacts__info {
@@ -63,6 +68,11 @@
   }
 }
 @media (max-width: 420px) {
+  .main{
+    .contacts{
+      padding-bottom: 40px;
+    }
+  }
   .contacts-inner {
     .info-title {
       @include font("Roboto", 16px, 19px, $black, 500);

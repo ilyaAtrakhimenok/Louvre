@@ -113,6 +113,7 @@
         @include font("Roboto", 20px, 60px, $white, 300);
         height: 60px;
         width: 300px;
+        letter-spacing: 2px;
       }
     }
     .welcome__slider {
@@ -123,7 +124,7 @@
         @include font("Roboto", 20px, 40px, $white);
       }
       .squares {
-        width: 140px;
+        width: 160px;
       }
       .slider-square {
         width: 12px;
@@ -139,6 +140,7 @@
   }
   .welcome-inner {
     height: auto;
+    padding-top:35px;
     background-image: none;
     background: none;
     .welcome__img {
@@ -164,10 +166,9 @@
     .welcome__slider {
       position: static;
       padding: 0;
-      padding-top: 30px;
-      padding-bottom: 30px;
       width: 100%;
       justify-content: center;
+      height: 100px;
       .welcome__slider-counter {
         @include font("Roboto", 20px, 40px, $white);
       }
@@ -197,8 +198,8 @@
     }
     .welcome__slider {
       height: auto;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
       .welcome__slider-counter {
         @include font("Roboto", 16px, 16px, $white);
       }

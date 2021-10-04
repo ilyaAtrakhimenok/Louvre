@@ -135,9 +135,15 @@
 }
 @media (max-width: 1024px) {
   .tickets-inner {
-    grid-template-columns: 1fr 0fr 1fr;
+    grid-template-columns: 2fr 0fr 1fr;
+    column-gap: 15px;
     justify-items: center;
-
+    .tickets__picture {
+      .tickets__img {
+        height: 440px;
+        width: 700px;
+      }
+    }
     .tickets__type {
       .tickets__type-inner {
         display: none;
@@ -145,25 +151,54 @@
     }
     .tickets__amount {
       .tickets__amount-inner {
+        .tickets__cost-title,
+        .tickets__age-text {
+          text-align: start;
+        }
         .tickets__total {
           margin-top: 25px;
         }
         .tickets__amount-age {
           .tickets__input {
-            font-size: 26px;
+            padding-left: -10px;
+            font-size: 36px;
           }
         }
       }
     }
   }
 }
-
+@media (max-width: 950px) {
+  .tickets-inner {
+    grid-template-columns: 2fr 0fr 1fr;
+    column-gap: 15px;
+    justify-items: center;
+    .tickets__picture {
+      .tickets__img {
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}
 @media (max-width: 768px) {
   .tickets-inner {
     .tickets__amount {
+      align-items: flex-start;
       .tickets__amount-inner {
-        .tickets__total-btn {
+        .tickets__amount-age {
+          margin-right: 15px;
+          margin-bottom: 25px;
+        }
+        .tickets__total {
           margin-top: 40px;
+        }
+        .tickets__total-btn {
+          padding: 10px 48px;
+          margin-top: 40px;
+        }
+        .tickets__cost-title {
+          margin-bottom: 40px;
         }
       }
     }
@@ -172,6 +207,17 @@
 @media (max-width: 500px) {
   .tickets-inner {
     display: block;
+    .tickets__type-title,
+    .tickets__cost-title,
+    .tickets__total {
+      @include font("Roboto", 16px, 19px, black, 700);
+    }
+    .tickets__radio-text,
+    .tickets__age-text,
+    .tickets__input,
+    .tickets__total-btn {
+      @include font("Roboto", 16px, 19px, black, 300);
+    }
     .tickets__picture {
       .tickets__img {
         max-height: 160px;
@@ -182,17 +228,19 @@
       margin-top: 40px;
       align-items: center;
       .tickets__amount-inner {
-        .tickets__cost-title{
+        .tickets__cost-title {
+          margin-bottom: 20px;
           text-align: center;
         }
-        .tickets__age-text{
+        .tickets__age-text {
           text-align: start;
         }
         .tickets__total {
           text-align: center;
-          margin-top: 25px;
+          margin-top: 40px;
         }
         .tickets__amount-age {
+          margin-right:0;
           .tickets__input {
             font-size: 34px;
           }

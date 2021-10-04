@@ -25,7 +25,7 @@
       position: absolute;
       bottom: 10px;
       left: 0;
-      width: 70%;
+      width: 50%;
       height: 2px;
       background-color: $crimson;
       transition-duration: 0.3s;
@@ -48,19 +48,23 @@
 }
 @media (max-width: 1024px) {
   .visiting-inner {
-    padding-left: 80px;
+    padding-left: 100px;
     padding-right: 80px;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 100px;
-    grid-row-gap: 60px;
+    grid-column-gap: 80px;
+    grid-row-gap: 70px;
   }
   .visiting__card {
     max-width: 330px;
     .visiting__card-name {
       @include font("Forum", 28px, 31px, black);
+      letter-spacing: 3px;
       &::after {
         bottom: 10px;
       }
+    }
+    .colonnade-name {
+      @include font("Forum", 24px, 28px, black);
     }
     .visiting__card-subscibtion {
       @include font("Roboto", 20px, 24px, black, 200);
@@ -74,14 +78,20 @@
 }
 
 @media (max-width: 768px) {
+  .main {
+    .visiting {
+      padding-bottom: 80px;
+    }
+  }
   .visiting-inner {
-    padding-left: 30px;
+    padding-left: 50px;
     padding-right: 30px;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap:55px;
+    grid-column-gap: 55px;
     grid-row-gap: 40px;
   }
   .visiting__card {
+    max-width: 280px;
     .visiting__card-name {
       @include font("Forum", 22px, 24px, black);
       &::after {
@@ -99,8 +109,13 @@
   }
 }
 @media (max-width: 570px) {
+  .main{
+    .visiting{
+      padding-bottom:40px;
+    }
+  }
   .visiting-inner {
-    padding-left: 10%;
+    padding-left: 12%;
     padding-right: 10%;
     grid-template-columns: repeat(1, 1fr);
     grid-row-gap: 40px;
@@ -116,6 +131,8 @@
       @include font("Roboto", 16px, 19px, black, 200);
       font-family: "Roboto", sans-serif;
       span {
+        display: block;
+        margin-top: 10px;
         font-size: 16px;
         line-height: 19px;
       }

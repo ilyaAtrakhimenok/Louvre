@@ -6,10 +6,11 @@ let volumeBtn = document.querySelector(".volume");
 let screenBtn = document.querySelector(".fullScreen");
 let player = document.querySelector(".player__video");
 let controls = document.querySelector(".player__controls");
-let plusFive = document.querySelector('.plusFive');
-let minusFive = document.querySelector('.minusFive');
-let speed = document.querySelector('.speed');
-let videoPlayBtn = document.querySelector('.video__play__img')
+let plusFive = document.querySelector(".plusFive");
+let minusFive = document.querySelector(".minusFive");
+let speed = document.querySelector(".speed");
+let videoPlayBtn = document.querySelector(".video__play__img");
+let videoBlock = document.getElementById("video");
 let timeoutMouseMove = null;
 let timeoutSpeed = null;
 
@@ -40,11 +41,11 @@ function toggleSwitcher() {
   if (video.paused) {
     video.play();
     toggleBtn.innerHTML = "❚❚";
-    videoPlayBtn.style.display = 'none';
+    videoPlayBtn.style.display = "none";
   } else {
     video.pause();
     toggleBtn.innerHTML = "►";
-    videoPlayBtn.style.display = 'block';
+    videoPlayBtn.style.display = "block";
   }
 }
 function playProc() {
@@ -91,66 +92,73 @@ function changeVolume() {
   }
 }
 function procKeyPress(key) {
-  let keyCode = key.code.toString();
-  switch (keyCode) {
-    case "Space":
-      key.preventDefault();
-      toggleSwitcher();
-      break;
-    case "Period":
-      if(video.playbackRate < 2){
-      clearTimeout(timeoutSpeed);
-      video.playbackRate += 0.25;
-      speed.innerHTML = `${video.playbackRate}x`;
-      speed.style.opacity = '100%';
-      timeoutSpeed = setTimeout(()=>{
-        speed.style.opacity = '0';
-      },2000)
+  console.log(
+    window.pageYOffset,
+    videoBlock.offsetTop,
+    videoBlock.getBoundingClientRect().height
+  );
+  if (window.pageYOffset >= videoBlock.offsetTop - 100 && window.pageYOffset < videoBlock.offsetTop + videoBlock.getBoundingClientRect().height) {
+    let keyCode = key.code.toString();
+    switch (keyCode) {
+      case "Space":
+        key.preventDefault();
+        toggleSwitcher();
+        break;
+      case "Period":
+        if (video.playbackRate < 2) {
+          clearTimeout(timeoutSpeed);
+          video.playbackRate += 0.25;
+          speed.innerHTML = `${video.playbackRate}x`;
+          speed.style.opacity = "100%";
+          timeoutSpeed = setTimeout(() => {
+            speed.style.opacity = "0";
+          }, 2000);
+        }
+        break;
+      case "Comma":
+        if (video.playbackRate > 0.25) {
+          clearTimeout(timeoutSpeed);
+          video.playbackRate -= 0.25;
+          speed.innerHTML = `${video.playbackRate}x`;
+          speed.style.opacity = "100%";
+          timeoutSpeed = setTimeout(() => {
+            speed.style.opacity = "0";
+          }, 2000);
+        }
+        break;
+      case "KeyM":
+        changeVolume();
+        break;
+      case "KeyF":
+        changeScreenMode();
+        break;
+      case "ArrowRight":
+        video.currentTime += 5;
+        let valPlus = Math.ceil((video.currentTime / video.duration) * 100);
+        progress.value = valPlus;
+        plusFive.style.opacity = "100%";
+        setTimeout(() => {
+          plusFive.style.opacity = "0";
+        }, 1400);
+        break;
+      case "ArrowLeft":
+        video.currentTime -= 5;
+        let valMinus = Math.ceil((video.currentTime / video.duration) * 100);
+        progress.value = valMinus;
+        minusFive.style.opacity = "100%";
+        setTimeout(() => {
+          minusFive.style.opacity = "0";
+        }, 1400);
+        break;
     }
-      break;
-    case "Comma":
-      if(video.playbackRate > 0.25){
-      clearTimeout(timeoutSpeed);
-      video.playbackRate -= 0.25;
-      speed.innerHTML = `${video.playbackRate}x`;
-      speed.style.opacity = '100%';
-      timeoutSpeed = setTimeout(()=>{
-        speed.style.opacity = '0';
-      },2000)
-    }
-      break;
-    case "KeyM":
-      changeVolume();
-      break;
-    case "KeyF":
-      changeScreenMode();
-      break;
-    case "ArrowRight":
-      video.currentTime += 5;
-      let valPlus = Math.ceil((video.currentTime / video.duration) * 100);
-      progress.value = valPlus;
-      plusFive.style.opacity = '100%';
-      setTimeout(()=>{
-        plusFive.style.opacity = '0';
-      },1400)
-      break;
-    case "ArrowLeft":
-      video.currentTime -= 5;
-      let valMinus = Math.ceil((video.currentTime / video.duration) * 100);
-      progress.value = valMinus;
-      minusFive.style.opacity = '100%';
-      setTimeout(()=>{
-        minusFive.style.opacity = '0';
-      },1400)
-      break;
   }
 }
-videoPlayBtn.addEventListener('mouseover',()=>{
-  videoPlayBtn.src = 'assets/svg/play__center_hover.svg'
-})
-videoPlayBtn.addEventListener('mouseout',()=>{
-  videoPlayBtn.src = 'assets/svg/play__center.svg'
-})
+videoPlayBtn.addEventListener("mouseover", () => {
+  videoPlayBtn.src = "assets/svg/play__center_hover.svg";
+});
+videoPlayBtn.addEventListener("mouseout", () => {
+  videoPlayBtn.src = "assets/svg/play__center.svg";
+});
 progress.addEventListener("mousemove", () => changeRangeProgress("progress"));
 video.addEventListener("timeupdate", playProc);
 volume.addEventListener("mousemove", () => changeRangeProgress("volume"));
@@ -160,8 +168,7 @@ video.addEventListener("ended", () => {
   controls.style.transform = "translateY(0)";
   video.load();
   progress.value = 0;
-  changeRangeProgress('progress');
-
+  changeRangeProgress("progress");
 });
 screenBtn.addEventListener("click", changeScreenMode);
 document.addEventListener("fullscreenchange", function () {
@@ -170,12 +177,9 @@ document.addEventListener("fullscreenchange", function () {
   }
 });
 video.addEventListener("mousemove", hideControls);
-video.addEventListener('click', ()=>{
+video.addEventListener("click", () => {
   toggleSwitcher();
-})
+});
 volumeBtn.addEventListener("click", changeVolume);
 document.addEventListener("keydown", procKeyPress);
-videoPlayBtn.addEventListener('click',toggleSwitcher);
-
-
-
+videoPlayBtn.addEventListener("click", toggleSwitcher);

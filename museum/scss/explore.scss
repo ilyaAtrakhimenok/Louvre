@@ -58,6 +58,7 @@
     .explore__description {
       margin-bottom: 60px;
       .explore__text {
+        @include font("Roboto", 20px, 38.5px, white, 300);
         margin-bottom: 0;
         &:last-child {
           display: none;

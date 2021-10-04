@@ -224,21 +224,13 @@
     }
   }
 }
-@media (max-width: 1024px) {
-  .courusel {
-    .player {
-      .player__video {
-        .video__play__img {
-          top: calc(50% - 40px);
-          left: calc(50% - 40px);
-          max-width: 80px;
-          max-height: 80px;
-        }
-      }
+
+@media (max-width: 768px) {
+  .main{
+    .video{
+      padding-bottom: 80px;
     }
   }
-}
-@media (max-width: 768px) {
   .player__controls {
     padding-bottom: 12px;
     padding-top: 12px;
@@ -279,8 +271,16 @@
       }
     }
   }
+  .slider-nav {
+    margin-top: 20px;
+  }
 }
 @media (max-width: 576px) {
+  .main{
+    .video{
+      padding-bottom: 40px;
+    }
+  }
   .player__controls {
     .play-pause,
     .fullScreen,
