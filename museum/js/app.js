@@ -1,13 +1,13 @@
-let user = {
-    name: 'ilya',
+let obj = {
+    name: 'hello',
+    age: 5,
+}
+let arr = [1,2,3]
+
+for(el in arr){
+    console.log(el);
+}
+for(el of arr){
+    console.log(el);
 }
 
-console.log(Symbol());
-let name = Symbol();
-
-user[name] = 1;
-
-for (el in user){
-    console.log(user[el]);
-    console.log(user[name]);
-}

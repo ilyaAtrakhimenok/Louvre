@@ -1,3 +1,5 @@
+@import "mixins.scss";
+
 .welcome {
   background-color: $black;
 }
@@ -10,15 +12,37 @@
   position: relative;
   height: 750px;
   padding-top: 150px;
-  background-image: url(/museum/assets/img/welcome-slider/1.jpg);
-  background-position-x: 100%;
-  background-position-y: 100%;
-  background-repeat: no-repeat;
-  background-size: 1000px 750px;
+  .img-wrapper {
+    position: absolute;
+    width: 1000px;
+    height: 750px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    bottom: 0;
+    right: 0;
+  }
+  .img-wrapper:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 50px 0 100px 10px black;
+    top: 0;
+    left: 0;
+    z-index: 1; /* You can use higher to ensure that it stays on top */
+  }
+  .welcome__img-slider {
+    position: absolute;
+    display: flex;
+  }
   .welcome__img {
-    display: none;
+    display: block;
+    height: 100%;
+    width: 100%;
   }
   .welcome__text {
+    position: relative;
+    z-index: 10;
     display: block;
   }
   .welcome__title {
@@ -57,7 +81,7 @@
     height: 120px;
     width: 600px;
     background-color: $black;
-
+    z-index: 2;
     .welcome__slider-counter {
       @include font("Roboto", 22px, 40px, $white);
     }
@@ -100,7 +124,20 @@
   .welcome-inner {
     height: 525px;
     padding-top: 50px;
-    background-size: 700px 525px;
+    .img-wrapper {
+      width: 700px;
+      height: 525px;
+    }
+    .img-wrapper:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      box-shadow: inset 50px 0 100px 10px black;
+      top: 0;
+      left: 0;
+      z-index: 1; /* You can use higher to ensure that it stays on top */
+    }
     .welcome__text {
       .welcome__title {
         @include font("Forum", 50px, 90px, $white);
@@ -139,14 +176,27 @@
     padding: 0;
   }
   .welcome-inner {
+    position: relative;
     height: auto;
-    padding-top:35px;
-    background-image: none;
-    background: none;
-    .welcome__img {
+    padding-top: 150px;
+    .img-wrapper {
+      width: 100%;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .img-wrapper:after {
       display: none;
     }
-    .welcome__active {
+    .welcome__img-slider {
+      position: absolute;
+      display: flex;
+    }
+    .welcome__img {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .welcome__img {
       display: block;
       height: 100%;
       width: 100%;
@@ -185,7 +235,7 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 540px) {
   .welcome-inner {
     padding-top: 0px;
     .welcome__text {

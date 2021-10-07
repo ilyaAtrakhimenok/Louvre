@@ -141,31 +141,19 @@
                 >Discover the Louvre</a
               >
             </div>
-            <img
-              class="welcome__active welcome__img"
-              src="assets/img/welcome-slider/1.jpg"
-              alt="welcome"
-            />
-            <img
-              class="welcome__img"
-              src="assets/img/welcome-slider/2.jpg"
-              alt="welcome"
-            />
-            <img
-              class="welcome__img"
-              src="assets/img/welcome-slider/3.jpg"
-              alt="welcome"
-            />
-            <img
-              class="welcome__img"
-              src="assets/img/welcome-slider/4.jpg"
-              alt="welcome"
-            />
-            <img
-              class="welcome__img"
-              src=" assets/img/welcome-slider/5.jpg"
-              alt="welcome"
-            />
+            <div class="img-wrapper">
+              <div class="welcome__img-slider">
+                <img
+                  class="welcome__img"
+                  src="assets/img/welcome-slider/1.jpg"
+                  alt="welcome"
+                />
+                <img class="welcome__img" src="assets/img/welcome-slider/2.jpg" alt="welcome" />
+                <img class="welcome__img" src="assets/img/welcome-slider/3.jpg" alt="welcome" />
+                <img class="welcome__img" src="assets/img/welcome-slider/4.jpg" alt="welcome" />
+                <img class="welcome__img" src=" assets/img/welcome-slider/5.jpg" alt="welcome" />
+              </div>
+            </div>
             <div class="welcome__slider">
               <div class="welcome__slider-counter">01 | 05</div>
               <div class="squares">
@@ -246,7 +234,9 @@
                   src=" assets/img/virtual-tour/ColonnadePerrault.jpg"
                   alt="Colonnade Perrault picture"
                 />
-                <h3 class="visiting__card-name colonnade-name">Colonnade Perrault</h3>
+                <h3 class="visiting__card-name colonnade-name">
+                  Colonnade Perrault
+                </h3>
                 <p class="visiting__card-subscibtion">
                   360° Virtual Tour<br />
                   <span>Google Street Panorama View</span>
@@ -671,7 +661,6 @@
         </div>
       </section>
       <div class="modal">
-        
         <div class="tickets__form">
           <span class="close">&times;</span>
           <div class="tickets__form-booking">
@@ -823,8 +812,7 @@
           </div>
         </div>
       </div>
-      <div class="parallax">
-      </div>
+      <div class="parallax"></div>
       <section class="contacts section" id="contacts">
         <div class="wrapper">
           <h2 class="contacts-title title">contacts</h2>
@@ -836,8 +824,16 @@
               </h3>
               <ul>
                 <li class="info-item">address 75001 Paris, France</li>
-                <li class="info-item"><a href="tel:+330140205050" class="info-link">phone: +33(0) 1 40 20 50 50</a></li>
-                <li class="info-item"><a href="mailto:info@louvre.fr" class="info-link">mail: info@louvre.fr</a></li>
+                <li class="info-item">
+                  <a href="tel:+330140205050" class="info-link"
+                    >phone: +33(0) 1 40 20 50 50</a
+                  >
+                </li>
+                <li class="info-item">
+                  <a href="mailto:info@louvre.fr" class="info-link"
+                    >mail: info@louvre.fr</a
+                  >
+                </li>
               </ul>
             </div>
             <div class="contacts__map">
@@ -849,33 +845,54 @@
       <footer class="footer" id="footer">
         <div class="wrapper">
           <div class="footer-inner">
-            <img src=" assets/svg/Logo.svg" alt="logo" class="footer-logo">
+            <img src=" assets/svg/Logo.svg" alt="logo" class="footer-logo" />
             <nav class="footer__nav">
               <ul class="footer__ul">
-                <li class="footer__item"><a href="#visiting" class="footer__link">Visiting</a></li>
-                <li class="footer__item"><a href="#explore" class="footer__link">Explore</a></li>
-                <li class="footer__item"><a href="#video" class="footer__link">Video</a></li>
-              <!-- </ul>
+                <li class="footer__item">
+                  <a href="#visiting" class="footer__link">Visiting</a>
+                </li>
+                <li class="footer__item">
+                  <a href="#explore" class="footer__link">Explore</a>
+                </li>
+                <li class="footer__item">
+                  <a href="#video" class="footer__link">Video</a>
+                </li>
+                <!-- </ul>
               <ul class="footer__ul"> -->
-                <li class="footer__item"><a href="#gallery" class="footer__link">Gallery</a></li>
-                <li class="footer__item"><a href="#tickets" class="footer__link">Tickets</a></li>
-                <li class="footer__item"><a href="#contacts" class="footer__link">Contacts</a></li>
+                <li class="footer__item">
+                  <a href="#gallery" class="footer__link">Gallery</a>
+                </li>
+                <li class="footer__item">
+                  <a href="#tickets" class="footer__link">Tickets</a>
+                </li>
+                <li class="footer__item">
+                  <a href="#contacts" class="footer__link">Contacts</a>
+                </li>
               </ul>
             </nav>
             <div class="footer__networks">
               <ul class="media">
                 <li class="media__item">
-                  <a class="media__link" href="https://www.youtube.com/user/louvre">
+                  <a
+                    class="media__link"
+                    href="https://www.youtube.com/user/louvre"
+                  >
                     <span class="icon icon-youtube"></span>
                   </a>
                 </li>
                 <li class="media__item">
-                  <a class="media__link" href="https://www.instagram.com/museelouvre/">
+                  <a
+                    class="media__link"
+                    href="https://www.instagram.com/museelouvre/"
+                  >
                     <span class="icon icon-instagram"></span>
                   </a>
                 </li>
                 <li class="media__item">
-                  <a class="media__link" href="https://www.facebook.com/museedulouvre">
+                  <a
+                    class="media__link"
+                    href="https://www.facebook.com/museedulouvre"
+                  >
                     <span class="icon icon-facebook"></span>
                   </a>
                 </li>
@@ -885,7 +902,10 @@
                   </a>
                 </li>
                 <li class="media__item">
-                  <a class="media__link" href="https://www.pinterest.fr/museedulouvre/">
+                  <a
+                    class="media__link"
+                    href="https://www.pinterest.fr/museedulouvre/"
+                  >
                     <span class="icon icon-pinterest"></span>
                   </a>
                 </li>
@@ -907,7 +927,6 @@
       <script src=" js/video.js"></script>
       <script src=" js/video__slider.js"></script>
       <script src=" js/tickets.js"></script>
-
     </main>
   </body>
 </html>

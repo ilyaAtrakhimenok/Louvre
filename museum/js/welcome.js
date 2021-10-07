@@ -5,10 +5,10 @@ let rightArrow = document.querySelector(".welcome__arrow-right");
 let welcomeInner = document.querySelector(".welcome-inner");
 let squares = document.querySelectorAll(".slider-square");
 let welcomeImgs = document.querySelectorAll(".welcome__img");
+let imgSlider = document.querySelector(".welcome__img-slider");
+let imgWrapper = document.querySelector(".img-wrapper");
 let imgs = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
-let timerId = null;
-let leftX,
-  rightX = 0;
+let mouseDownPos, mouseUpPos, xDown = null; 
 function findActiveIndex(arr, classActive) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].classList.contains(classActive)) {
@@ -19,79 +19,47 @@ function findActiveIndex(arr, classActive) {
 function changeCounter() {
   counter.innerHTML = `0${findActiveIndex(squares, "active-square") + 1} | 05`;
 }
-function changeImg(direction) {
-  clearTimeout(timerId);
-  let activeIndex = findActiveIndex(squares, "active-square");
-  if (window.innerWidth > 768) {
-    welcomeInner.style.backgroundImage = `url(assets/img/welcome-slider/${imgs[activeIndex]})`;
-    if (direction == "left") {
-      welcomeInner.animate(
-        [
-          { backgroundPositionX: `${welcomeInner.clientWidth}px` },
-          { backgroundPositionX: "100%" },
-        ],
-        {
-          duration: 700,
-          easing: "ease-in-out",
-        }
-      );
-    } else {
-      welcomeInner.animate(
-        [
-          { backgroundPositionX: `-${window.innerWidth / 2.7}px` },
-          { backgroundPositionX: "100%" },
-        ],
-        {
-          duration: 700,
-          easing: "ease-in-out",
-        }
-      );
-    }
-  }
-  else{
-    let activeIndexImg = findActiveIndex(welcomeImgs, "welcome__active");
-    welcomeImgs[activeIndexImg].classList.remove('welcome__active');
-    welcomeImgs[activeIndex].classList.add('welcome__active');
-
-    if (direction == "left") {
-      welcomeImgs[activeIndex].animate(
-        [
-          { transform: `translateX(100%)` },
-          { transform: "translateX(0)" },
-        ],
-        {
-          duration: 700,
-          easing: "ease-in-out",
-        }
-      );
-    } else {
-      welcomeImgs[activeIndex].animate(
-        [
-          { transform: `translateX(-100%)` },
-          { transform: "translateX(0)" },
-        ],
-        {
-          duration: 700,
-          easing: "ease-in-out",
-        }
-      );
-    }
-  }
+function translateNext(activeIndex, activeIndexSwitch) {
+  imgSlider.animate(
+    [
+      {
+        transform: `translateX(-${
+          welcomeImgs[0].clientWidth * (5 - welcomeImgs.length + activeIndex)
+        }px)`,
+      },
+      {
+        transform: `translateX(-${
+          welcomeImgs[0].clientWidth *
+          (5 - welcomeImgs.length + activeIndexSwitch)
+        }px)`,
+      },
+    ],
+    { duration: 520 }
+  );
+  imgSlider.style.transform = `translateX(-${
+    welcomeImgs[0].clientWidth * (5 - welcomeImgs.length + activeIndexSwitch)
+  }px)`;
 }
-function moveNext() {
-  let activeIndex = findActiveIndex(squares, "active-square");
-
-  if (activeIndex == squares.length - 1) {
-    squares[activeIndex].classList.remove("active-square");
-    squares[0].classList.add("active-square");
-  } else {
-    squares[activeIndex].classList.remove("active-square");
-    squares[activeIndex + 1].classList.add("active-square");
-  }
-  changeCounter();
-  changeImg("right");
+function translatePrev(activeIndex, activeIndexSwitch) {
+  imgSlider.animate(
+    [
+      {
+        transform: `translateX(-${activeIndex * welcomeImgs[0].clientWidth}px)`,
+      },
+      {
+        transform: `translateX(-${
+          activeIndexSwitch * welcomeImgs[0].clientWidth
+        }px`,
+      },
+    ],
+    { duration: 520 }
+  );
+  imgSlider.style.transform = `translateX(-${
+    activeIndexSwitch * welcomeImgs[0].clientWidth
+  }px)`;
 }
-function movePrev() {
+function moveRight() {
+  console.log('next')
   let activeIndex = findActiveIndex(squares, "active-square");
 
   if (activeIndex == 0) {
@@ -101,8 +69,24 @@ function movePrev() {
     squares[activeIndex].classList.remove("active-square");
     squares[activeIndex - 1].classList.add("active-square");
   }
+  let activeIndexSwitch = findActiveIndex(squares, "active-square");
+  translateNext(activeIndex, activeIndexSwitch);
   changeCounter();
-  changeImg("left");
+}
+function moveLeft() {
+  console.log("prev");
+  let activeIndex = findActiveIndex(squares, "active-square");
+
+  if (activeIndex == squares.length - 1) {
+    squares[activeIndex].classList.remove("active-square");
+    squares[0].classList.add("active-square");
+  } else {
+    squares[activeIndex].classList.remove("active-square");
+    squares[activeIndex + 1].classList.add("active-square");
+  }
+  let activeIndexSwitch = findActiveIndex(squares, "active-square");
+  translatePrev(activeIndex, activeIndexSwitch);
+  changeCounter();
 }
 
 function changeActiveElement(elem) {
@@ -111,35 +95,79 @@ function changeActiveElement(elem) {
   squares[activeIndex].classList.remove("active-square");
   elem.classList.add("active-square");
   direct = activeIndex - findActiveIndex(squares, "active-square");
-  if (direct > 0) changeImg("left");
-  else changeImg("right");
+  let activeIndexSwitch = findActiveIndex(squares, "active-square");
+  if (direct > 0) {
+    translatePrev(activeIndex, activeIndexSwitch);
+  } else {
+    translateNext(activeIndex, activeIndexSwitch);
+  }
   changeCounter();
 }
-function controlShadow() {
-  if (window.innerWidth > 1500)
-    welcomeInner.style.boxShadow = `inset ${500}px 0px 100px 0px rgba(0, 0, 0, 1)`;
-  else if (window.innerWidth > 768) {
-    welcomeInner.style.boxShadow = `inset ${
-      window.innerWidth / 3
-    }px 0px 100px 0px rgba(0, 0, 0, 1)`;
-  } else {
-    welcomeInner.style.boxShadow = `none`;
+function controlSize() {
+  if (window.innerWidth < 1440 && window.innerWidth > 768) {
+    console.log("here", window.innerWidth);
+    imgWrapper.style.width = `${window.innerWidth * 0.695}px`;
+    imgWrapper.style.height = `${
+      (750 * parseInt(imgWrapper.style.width)) / 1000
+    }px`;
+  } else if (window.innerWidth <= 768) {
+    console.log("here 768", window.innerWidth, imgWrapper.clientWidth);
+    imgWrapper.style.width = `100%`;
+    imgWrapper.style.height = `${imgWrapper.clientWidth / 1.3}px`;
   }
 }
+
 function mouseDown(event) {
-  document.body.style.cursor = "grab";
-  leftX = event.clientX;
+  welcomeInner.style.cursor = 'grab';
+  mouseDownPos = event.pageX;
 }
 function mouseUp(event) {
-  document.body.style.cursor = "default";
-  rightX = event.clientX;
-  if (leftX - rightX > 200) movePrev();
-  else if (rightX - leftX > 200) moveNext();
+  mouseUpPos = event.pageX;
+  console.log(mouseDownPos - mouseUpPos);
+  if(mouseDownPos - mouseUpPos > 100){
+    moveLeft();
+  }
+  else if(mouseUpPos - mouseDownPos > 100){
+    moveRight();
+  }
+  welcomeInner.style.cursor = 'default';
 }
-changeImg('left');
-controlShadow();
-window.addEventListener("resize", controlShadow);
-rightArrow.addEventListener("click", moveNext);
-leftArrow.addEventListener("click", movePrev);
+                                                       
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                                                        
+};                                                
+                                                                         
+function handleTouchMove(evt) {
+    if ( ! xDown ) {
+        return;
+    }
+
+    let xUp = evt.touches[0].clientX;                                    
+
+    let xDiff = xDown - xUp;
+                                                                         
+    if ( Math.abs( xDiff)) {
+        if ( xDiff > 0 ) {
+          moveLeft();
+        } else {
+          moveRight();
+        }                       
+    }                                                                
+    xDown = null;
+    yDown = null;                                             
+};
+controlSize();
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+window.addEventListener("resize", controlSize);
+rightArrow.addEventListener("click", moveRight);
+leftArrow.addEventListener("click", moveLeft);
 welcomeInner.addEventListener("mousedown", mouseDown);
 welcomeInner.addEventListener("mouseup", mouseUp);
