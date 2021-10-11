@@ -148,10 +148,26 @@
                   src="assets/img/welcome-slider/1.jpg"
                   alt="welcome"
                 />
-                <img class="welcome__img" src="assets/img/welcome-slider/2.jpg" alt="welcome" />
-                <img class="welcome__img" src="assets/img/welcome-slider/3.jpg" alt="welcome" />
-                <img class="welcome__img" src="assets/img/welcome-slider/4.jpg" alt="welcome" />
-                <img class="welcome__img" src=" assets/img/welcome-slider/5.jpg" alt="welcome" />
+                <img
+                  class="welcome__img"
+                  src="assets/img/welcome-slider/2.jpg"
+                  alt="welcome"
+                />
+                <img
+                  class="welcome__img"
+                  src="assets/img/welcome-slider/3.jpg"
+                  alt="welcome"
+                />
+                <img
+                  class="welcome__img"
+                  src="assets/img/welcome-slider/4.jpg"
+                  alt="welcome"
+                />
+                <img
+                  class="welcome__img"
+                  src=" assets/img/welcome-slider/5.jpg"
+                  alt="welcome"
+                />
               </div>
             </div>
             <div class="welcome__slider">
@@ -401,8 +417,11 @@
             </div>
 
             <div class="slider">
-              <div class="slider-content">
-                <div class="item active" onclick="changeActiveElementImg(this)">
+              <div
+                class="slider-content"
+                onclick="changeActiveElementImg(this)"
+              >
+                <div class="item active" id="playerId">
                   <iframe
                     class="item__video"
                     loading="lazy"
@@ -424,6 +443,7 @@
                 </div>
                 <div class="item" onclick="changeActiveElementImg(this)">
                   <iframe
+                    id="first__video"
                     class="item__video"
                     loading="lazy"
                     src="https://www.youtube.com/embed/NOhDysLnTvY"
@@ -583,17 +603,17 @@
             <div class="tickets__type">
               <div class="tickets__type-inner">
                 <h3 class="tickets__type-title">Ticket Type</h3>
-                <label class="tickets__container">
+                <label class="tickets__container" onclick="changeType(this)">
                   <input type="radio" checked="checked" name="radio" />
                   <span class="checkmark"></span>
                   <span class="tickets__radio-text">Permanent exhibition</span>
                 </label>
-                <label class="tickets__container">
+                <label class="tickets__container" onclick="changeType(this)">
                   <input type="radio" name="radio" />
                   <span class="checkmark"></span>
                   <span class="tickets__radio-text">Temporary exhibition</span>
                 </label>
-                <label class="tickets__container">
+                <label class="tickets__container" onclick="changeType(this)">
                   <input type="radio" name="radio" />
                   <span class="checkmark"></span>
                   <span class="tickets__radio-text">Combined Admission</span>
@@ -672,14 +692,25 @@
                     type="date"
                     id="booking-date-form"
                     class="form-icon form-arrow border-form"
+                    required
                   />
+                  <span id="date-form-text">Date</span>
                 </div>
                 <div class="booking-time">
+                  <div class="tooltip-text">
+                    You can choose time between 9:00 and 18:00 with step 30
+                    minuts
+                  </div>
                   <input
                     type="time"
                     id="booking-time-form"
                     class="form-icon form-arrow border-form"
+                    min="09:00"
+                    max="18:00"
+                    step="1800"
+                    required
                   />
+                  <span id="time-form-text">Time</span>
                 </div>
               </div>
               <input
@@ -688,6 +719,8 @@
                 id="booking-name"
                 placeholder="Name"
                 class="form-icon booking-input border-form"
+                autocomplete="off"
+                required
               />
               <input
                 type="email"
@@ -695,6 +728,8 @@
                 id="booking-email"
                 placeholder="Email"
                 class="form-icon booking-input border-form"
+                autocomplete="off"
+                required
               />
               <input
                 type="tel"
@@ -702,11 +737,14 @@
                 id="booking-tel"
                 placeholder="Phone"
                 class="form-icon booking-input border-form"
+                autocomplete="off"
+                required
               />
               <select
                 name="tickets type"
                 id="booking-type"
                 class="form-icon booking-input form-arrow border-form"
+                required
               >
                 <option>Tickets type</option>
                 <option>Permanent exhibition</option>
@@ -797,16 +835,51 @@
               </div>
             </div>
             <div class="overview-cards">
-              <img
-                src=" assets/img/back.jpg"
-                alt="back card"
-                class="back-card"
-              />
-              <img
-                src=" assets/img/forward.jpg"
-                alt="forward card"
-                class="forward-card"
-              />
+              <div class="forward-card-container">
+                <input
+                  type="text"
+                  name="card number"
+                  id="card-number"
+                  autocomplete="off"
+                  placeholder="4000 1234 1234 1234"
+                  required
+                />
+                <input
+                  type="number"
+                  name="expiration date"
+                  id="expiration-date-month"
+                  autocomplete="off"
+                  required
+                />
+                <input
+                  type="number"
+                  name="expiration date"
+                  id="expiration-date-year"
+                  autocomplete="off"
+                  required
+                />
+                <input
+                  type="text"
+                  name="cardholder name"
+                  id="cardholder"
+                  autocomplete="off"
+                  placeholder="NAME SURNAME"
+                  required
+                />
+                <img
+                  src=" assets/img/forward.jpg"
+                  alt="forward card"
+                  class="forward-card"
+                />
+              </div>
+              <div class="back-card-container">
+                <input type="text" name="card number" id="card-cvc" required />
+                <img
+                  src=" assets/img/back.jpg"
+                  alt="back card"
+                  class="back-card"
+                />
+              </div>
             </div>
             <button id="overview-book">Book</button>
           </div>
@@ -837,7 +910,7 @@
               </ul>
             </div>
             <div class="contacts__map">
-              <img src=" assets/img/map.png" alt="map" class="map-img" />
+              <div class="map" id="map"></div>
             </div>
           </div>
         </div>
@@ -857,8 +930,7 @@
                 <li class="footer__item">
                   <a href="#video" class="footer__link">Video</a>
                 </li>
-                <!-- </ul>
-              <ul class="footer__ul"> -->
+
                 <li class="footer__item">
                   <a href="#gallery" class="footer__link">Gallery</a>
                 </li>
@@ -927,6 +999,22 @@
       <script src=" js/video.js"></script>
       <script src=" js/video__slider.js"></script>
       <script src=" js/tickets.js"></script>
+      <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4jxLdX4-DNyuqKjJ3Kq7aiffh5n2dOk0&callback=initMap"
+      ></script>
+      <script>
+        function initMap() {
+            var dumbo = {lat: 48.86063139320586, lng:2.3377726799156946};
+            var mapOptions = {
+                center: dumbo,
+                zoom: 16
+            };
+            // 48.86063139320586, 2.3377726799156946
+            var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
+        }
+        initMap();
+    </script>
     </main>
   </body>
 </html>

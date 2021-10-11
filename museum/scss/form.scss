@@ -13,7 +13,7 @@
   background-color: rgba(0, 0, 0, 0.9);
   .close {
     position: absolute;
-    top:25px;
+    top: 25px;
     right: 30px;
     color: #303030;
     font-size: 45px;
@@ -31,6 +31,13 @@
   height: auto;
   padding: 75px 25px 30px 25px;
   background: white;
+  .booking-input {
+    position: relative;
+  }
+  .uncorrect {
+    @include font("Forum", 16px, 18px, red, 300);
+    margin-bottom: 10px;
+  }
   .border-form {
     border: 1px solid #303030;
   }
@@ -82,13 +89,42 @@
         .booking-date,
         .booking-time {
           position: relative;
+          span {
+            position: absolute;
+            left: 45px;
+            top: 14px;
+          }
         }
         #booking-date-form,
         #booking-time-form {
           width: 190px;
           height: 45px;
         }
+        .tooltip-text {
+          @include font("Roboto", 14px, 19px, black, 400);
+          position: absolute;
+          top: -80px;
+          width: 200px;
+          height: auto;
+          padding: 5px;
+          border-radius: 4px;
+          border: 1px solid black;
+          background-color: white;
+          visibility: hidden;
+          &:after {
+            content: " ";
+            position: absolute;
+            bottom: -10px;
+            left: 90px;
 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid black;
+          }
+        }
+        .booking-time:hover .tooltip-text {
+          visibility: visible;
+        }
         #booking-date-form {
           position: relative;
           background-image: url(../assets/svg/forms/date.svg),
@@ -96,12 +132,6 @@
           background-repeat: no-repeat;
           background-size: 15px 15px, 17px 17px;
           background-position: 15px 15px, 155px 14px;
-          &::after {
-            content: "Date";
-            position: absolute;
-            left: 45px;
-            top: 12px;
-          }
         }
 
         #booking-time-form {
@@ -110,12 +140,6 @@
           background-repeat: no-repeat;
           background-size: 15px 15px, 17px 17px;
           background-position: 15px 15px, 155px 14px;
-          &::after {
-            content: "Time";
-            position: absolute;
-            left: 45px;
-            top: 13px;
-          }
         }
         #booking-date-form::-webkit-calendar-picker-indicator,
         #booking-time-form::-webkit-calendar-picker-indicator {
@@ -193,7 +217,7 @@
       }
       .tickets__input {
         display: inline-block;
-        padding-left: 10%;
+        padding-left: 12%;
         width: 50px;
         border: 3px solid black;
         border-left: none;
@@ -258,7 +282,10 @@
       .overview-basic,
       .overview-senior,
       .overview-total {
+        margin-bottom:5px;
+        .overview-total-text, .overview-total-total{
         @include font("Roboto", 22px, 26px, black, 400);
+        }
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -304,15 +331,59 @@
     }
     .overview-cards {
       position: relative;
-      .forward-card {
+      .forward-card-container {
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 10;
+        .forward-card {
+          width: 100%;
+          height: auto;
+        }
+        input {
+          position: absolute;
+        }
+        #card-number {
+          left: 20px;
+          top: 35px;
+          width: 215px;
+          height: 35px;
+        }
+        #expiration-date-month {
+          left: 20px;
+          top: 98px;
+          width: 100px;
+          height: 35px;
+        }
+        #expiration-date-year {
+          left: 135px;
+          top: 98px;
+          width: 100px;
+          height: 35px;
+        }
+        #cardholder {
+          left: 20px;
+          top: 161px;
+          width: 320px;
+          height: 35px;
+        }
       }
-      .back-card {
+      .back-card-container {
         position: absolute;
         top: 30px;
         left: 110px;
+        z-index: 5;
+        .back-card {
+          width: 100%;
+          height: auto;
+        }
+        #card-cvc {
+          position: absolute;
+          top: 105px;
+          right: 20px;
+          width: 75px;
+          height: 35px;
+        }
       }
     }
     #overview-book {
@@ -348,13 +419,13 @@
   }
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1020px) {
   .tickets__form {
     display: block;
     max-width: 590px;
     overflow-y: scroll;
     overflow-x: hidden;
-    
+
     width: 100vw; /* viewport width */
     height: 100vh; /* viewport height */
     .tickets__form-booking {
@@ -372,6 +443,7 @@
           #booking-time-form {
             width: 250px;
             height: 45px;
+            background-position: 15px 15px, 95% 14px;
           }
         }
       }
@@ -412,7 +484,8 @@
       }
       .booking-entry {
         .tickets__input {
-          width: 40px;
+          width: 35px;
+          padding-left: 12%;
         }
       }
     }
@@ -423,16 +496,132 @@
       .overview-cards {
         position: static;
         display: block;
-        .forward-card {
-          max-width: 100%;
-          position: static;
-          display: block;
-        }
-        .back-card {
-          max-width: 100%;
-          position: static;
-          display: block;
+        .forward-card-container {
+          position: relative;
+          top: 0;
+          left: 0;
           margin-bottom: 25px;
+          .forward-card {
+            max-width: 100%;
+            position: static;
+            display: block;
+          }
+          #card-number {
+            left: 17px;
+            top: 29px;
+            width: 188px;
+            height: 31px;
+          }
+          #expiration-date-month {
+            left: 17px;
+            top: 85px;
+            width: 88px;
+            height: 31px;
+          }
+          #expiration-date-year {
+            left: 117px;
+            top: 85px;
+            width: 88px;
+            height: 31px;
+          }
+          #cardholder {
+            left: 17px;
+            top: 140px;
+            width: 280px;
+            height: 31px;
+          }
+        }
+        .back-card-container {
+          position: relative;
+          top: 0;
+          left: 0;
+          #card-cvc {
+            position: absolute;
+            top: 91px;
+            right: 17px;
+            width: 66px;
+            height: 31px;
+          }
+          .back-card {
+            max-width: 100%;
+            position: static;
+            display: block;
+            margin-bottom: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 420px) {
+  .tickets__form {
+    .tickets__form-booking{
+      .booking-entry{
+        .tickets__btn {
+          width:25px;
+        }
+      }
+    }
+    .tickets__form-overview {
+      padding-bottom: 100px;
+      .overview-cards {
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 12px;
+        .forward-card-container {
+          position: relative;
+          top: 0;
+          left: 0;
+          margin-bottom: 25px;
+          .forward-card {
+            width:215px;
+            height: 125px;
+            position: static;
+            display: block;
+          }
+          #card-number {
+            left: 12px;
+            top: 19px;
+            width: 132px;
+            height: 23px;
+          }
+          #expiration-date-month {
+            left: 12px;
+            top: 57px;
+            width: 62px;
+            height: 23px;
+          }
+          #expiration-date-year {
+            left: 80px;
+            top: 57px;
+            width: 62px;
+            height: 23px;
+          }
+          #cardholder {
+            left: 12px;
+            top: 95px;
+            width: 197px;
+            height: 23px;
+          }
+        }
+        .back-card-container {
+          .back-card {
+            width:215px;
+            height: 125px;
+            position: static;
+            display: block;
+            margin-bottom: 25px;
+          }
+          #card-cvc {
+            position: absolute;
+            top: 61px;
+            right: 12px;
+            width: 48px;
+            height: 23px;
+          }
         }
       }
     }

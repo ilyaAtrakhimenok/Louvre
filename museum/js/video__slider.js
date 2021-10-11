@@ -4,6 +4,7 @@ let leftArrowVideo = document.querySelector(".left-arrow");
 let rightArrowVideo = document.querySelector(".right-arrow");
 let movie = document.querySelector(".video__movie");
 let progRange = document.querySelector(".progress-range");
+let firstVideo = document.getElementById("first__video");
 let videoWidth = 450;
 let videos = [
   "assets/video/video.mp4",
@@ -87,15 +88,15 @@ function changeActiveElementDot(elem) {
   changeVideo();
 }
 function changeActiveElementImg(elem) {
-  let activeIndex = findActiveIndex(sliders, "active");
-  sliders[activeIndex].classList.remove("active");
-  elem.classList.add("active");
+  // let activeIndex = findActiveIndex(sliders, "active");
+  // sliders[activeIndex].classList.remove("active");
+  // elem.parentElement.classList.add("active");
 
-  activeIndex = findActiveIndex(dots, "active-dot");
-  dots[activeIndex].classList.remove("active-dot");
-  activeIndex = findActiveIndex(sliders, "active");
-  dots[activeIndex].classList.add("active-dot");
-  changeVideo();
+  // activeIndex = findActiveIndex(dots, "active-dot");
+  // dots[activeIndex].classList.remove("active-dot");
+  // activeIndex = findActiveIndex(sliders, "active");
+  // dots[activeIndex].classList.add("active-dot");
+  // changeVideo();
 }
 function hideSliders(activeIndex) {
   if (movie.clientWidth > 768) {
@@ -173,8 +174,9 @@ function resize() {
   }
   hideSliders(findActiveIndex(sliders, "active"));
 }
-hideSliders(findActiveIndex(sliders, "active"));
+
 resize();
+hideSliders(findActiveIndex(sliders, "active"));
 window.addEventListener("resize", resize);
 rightArrowVideo.addEventListener("click", moveNext);
 leftArrowVideo.addEventListener("click", movePrev);

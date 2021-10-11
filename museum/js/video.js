@@ -92,11 +92,6 @@ function changeVolume() {
   }
 }
 function procKeyPress(key) {
-  console.log(
-    window.pageYOffset,
-    videoBlock.offsetTop,
-    videoBlock.getBoundingClientRect().height
-  );
   if (window.pageYOffset >= videoBlock.offsetTop - 100 && window.pageYOffset < videoBlock.offsetTop + videoBlock.getBoundingClientRect().height) {
     let keyCode = key.code.toString();
     switch (keyCode) {

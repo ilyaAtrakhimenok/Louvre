@@ -59,7 +59,6 @@ function translatePrev(activeIndex, activeIndexSwitch) {
   }px)`;
 }
 function moveRight() {
-  console.log('next')
   let activeIndex = findActiveIndex(squares, "active-square");
 
   if (activeIndex == 0) {
@@ -74,7 +73,6 @@ function moveRight() {
   changeCounter();
 }
 function moveLeft() {
-  console.log("prev");
   let activeIndex = findActiveIndex(squares, "active-square");
 
   if (activeIndex == squares.length - 1) {
@@ -104,14 +102,7 @@ function changeActiveElement(elem) {
   changeCounter();
 }
 function controlSize() {
-  if (window.innerWidth < 1440 && window.innerWidth > 768) {
-    console.log("here", window.innerWidth);
-    imgWrapper.style.width = `${window.innerWidth * 0.695}px`;
-    imgWrapper.style.height = `${
-      (750 * parseInt(imgWrapper.style.width)) / 1000
-    }px`;
-  } else if (window.innerWidth <= 768) {
-    console.log("here 768", window.innerWidth, imgWrapper.clientWidth);
+  if (window.innerWidth <= 768) {
     imgWrapper.style.width = `100%`;
     imgWrapper.style.height = `${imgWrapper.clientWidth / 1.3}px`;
   }
@@ -123,7 +114,6 @@ function mouseDown(event) {
 }
 function mouseUp(event) {
   mouseUpPos = event.pageX;
-  console.log(mouseDownPos - mouseUpPos);
   if(mouseDownPos - mouseUpPos > 100){
     moveLeft();
   }
@@ -167,7 +157,7 @@ controlSize();
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 window.addEventListener("resize", controlSize);
-rightArrow.addEventListener("click", moveRight);
-leftArrow.addEventListener("click", moveLeft);
+rightArrow.addEventListener("click",moveLeft );
+leftArrow.addEventListener("click", moveRight);
 welcomeInner.addEventListener("mousedown", mouseDown);
 welcomeInner.addEventListener("mouseup", mouseUp);

@@ -33,7 +33,9 @@
   }
   .welcome__img-slider {
     position: absolute;
-    display: flex;
+    display:flex;
+    width: 100%;
+    height: 100%;
   }
   .welcome__img {
     display: block;
@@ -178,7 +180,7 @@
   .welcome-inner {
     position: relative;
     height: auto;
-    padding-top: 150px;
+    padding-top: 0;
     .img-wrapper {
       width: 100%;
       position: relative;

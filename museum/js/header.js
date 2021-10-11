@@ -10,7 +10,6 @@ let innerHeight = window.innerHeight;
 let isFinish = true;
 
 async function showMenu() {
-  console.log('showMenu',isFinish);
   if (isFinish) {
     isFinish = false;
     if (window.innerWidth > 768) {
@@ -55,7 +54,6 @@ async function showMenu() {
 }
 
 async function cancelMenu() {
-  console.log('cancelMenu',isFinish);
   if (isFinish) {
     isFinish = false;
     await smoothlyHideNav();
@@ -76,21 +74,20 @@ async function cancelMenu() {
     }
     isFinish = true;
   }
+}
 
-  function changeAdaptive() {
-    console.log(window.innerHeight);
-    if (window.innerWidth > 1024) {
-      nav.style.display = "block";
-      burger.style.display = "none";
-      cancel.style.display = "none";
-      menuItems.forEach((item) => {
-        item.style.display = "block";
-      });
-    } else {
-      hideMenu();
-    }
-    isFinish = true;
+function changeAdaptive() {
+  if (window.innerWidth > 1024) {
+    nav.style.display = "block";
+    burger.style.display = "none";
+    cancel.style.display = "none";
+    menuItems.forEach((item) => {
+      item.style.display = "block";
+    });
+  } else {
+    hideMenu();
   }
+  isFinish = true;
 }
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -121,7 +118,7 @@ window.addEventListener("click", function (event) {
     nav.style.display == "block" &&
     event.target.className != "header__item" &&
     event.target.className != "fas fa-bars" &&
-    window.innerWidth < 1024
+    window.innerWidth <= 1024
   ) {
     cancelMenu();
   }
