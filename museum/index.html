@@ -23,6 +23,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href=" css/reset.css" />
     <link rel="stylesheet" href=" css/style.css" />
   </head>
@@ -211,11 +215,12 @@
               href="https://www.google.com/maps/@48.8606882,2.3356791,3a,90y,328.36h,87.55t/data=!3m7!1e1!3m5!1sAF1QipMZ9YgnArbwEIbTDANeSQYFu9gNqpW_2Sv8FBvY!2e10!3e12!7i4352!8i1815"
             >
               <div class="visiting__card">
-                <img
-                  class="visiting__img"
-                  src=" assets/img/virtual-tour/RoyalPalace.jpg"
-                  alt="Roal Place picture"
-                />
+                <div class="visiting__img">
+                  <img
+                    src=" assets/img/virtual-tour/RoyalPalace.jpg"
+                    alt="Roal Place picture"
+                  />
+                </div>
                 <h3 class="visiting__card-name">Royal Palace</h3>
                 <p class="visiting__card-subscibtion">
                   360° Virtual Tour<br />
@@ -228,11 +233,12 @@
               href="https://www.google.com/maps/@48.8563254,2.3352706,3a,75y,90t/data=!3m7!1e1!3m5!1sAF1QipNRj_CwP4coDMYdCHj6qHeBeJpI2VxU5BUsOX4F!2e10!3e12!7i11000!8i5500"
             >
               <div class="visiting__card">
-                <img
-                  class="visiting__img"
-                  src=" assets/img/virtual-tour/DenonWing.jpg"
-                  alt="Denon Wing picture"
-                />
+                <div class="visiting__img">
+                  <img
+                    src=" assets/img/virtual-tour/DenonWing.jpg"
+                    alt="Denon Wing picture"
+                  />
+                </div>
                 <h3 class="visiting__card-name">Denon Wing</h3>
                 <p class="visiting__card-subscibtion">
                   360° Virtual Tour<br />
@@ -245,11 +251,12 @@
               href="https://www.google.com/maps/@48.8601723,2.3395439,3a,88.4y,322.04h,84.25t/data=!3m7!1e1!3m5!1sAF1QipNMZGQuEA-pAUvIG_eP_2f3gWTKZEJ6XLVJ-Pgb!2e10!3e12!7i10240!8i5120"
             >
               <div class="visiting__card">
-                <img
-                  class="visiting__img"
-                  src=" assets/img/virtual-tour/ColonnadePerrault.jpg"
-                  alt="Colonnade Perrault picture"
-                />
+                <div class="visiting__img">
+                  <img
+                    src=" assets/img/virtual-tour/ColonnadePerrault.jpg"
+                    alt="Colonnade Perrault picture"
+                  />
+                </div>
                 <h3 class="visiting__card-name colonnade-name">
                   Colonnade Perrault
                 </h3>
@@ -264,11 +271,12 @@
               href="https://www.google.com/maps/@48.860183,2.3356156,3a,90y,177.69h,95.61t/data=!3m7!1e1!3m5!1sAF1QipP7uFZnTITRe-7AEVAgHAfqiCL-03gvBHcYWgF3!2e10!3e12!7i5472!8i2736"
             >
               <div class="visiting__card">
-                <img
-                  class="visiting__img"
-                  src=" assets/img/virtual-tour/GreekHall.jpg"
-                  alt="Greek Hall picture"
-                />
+                <div class="visiting__img">
+                  <img
+                    src=" assets/img/virtual-tour/GreekHall.jpg"
+                    alt="Greek Hall picture"
+                  />
+                </div>
                 <h3 class="visiting__card-name">Greek hall</h3>
                 <p class="visiting__card-subscibtion">
                   360° Virtual Tour<br />
@@ -281,11 +289,12 @@
               href="https://www.google.com/maps/@48.8598788,2.3355157,3a,82.2y,7.53h,94t/data=!3m7!1e1!3m5!1sAF1QipO1wkUUbyzpPjj-OR0mR5etZJT-xl-40XK8rDQ3!2e10!3e12!7i10240!8i5120"
             >
               <div class="visiting__card">
-                <img
-                  class="visiting__img"
-                  src=" assets/img/virtual-tour/MonaLisa.jpg"
-                  alt="Mona Lisa picture"
-                />
+                <div class="visiting__img">
+                  <img
+                    src=" assets/img/virtual-tour/MonaLisa.jpg"
+                    alt="Mona Lisa picture"
+                  />
+                </div>
                 <h3 class="visiting__card-name">Mona Lisa</h3>
                 <p class="visiting__card-subscibtion">
                   360° Virtual Tour<br />
@@ -298,11 +307,12 @@
               href="https://www.google.com/maps/@48.8563254,2.3352706,3a,90y,21.26h,79.91t/data=!3m7!1e1!3m5!1sAF1QipPpGAowYatVyk3MMGnZAaQkYm2EUk-Dlca06SS5!2e10!3e12!7i11304!8i5652"
             >
               <div class="visiting__card">
-                <img
-                  class="visiting__img"
-                  src=" assets/img/virtual-tour/NightPalace.jpg"
-                  alt="Night Palace picture"
-                />
+                <div class="visiting__img">
+                  <img
+                    src=" assets/img/virtual-tour/NightPalace.jpg"
+                    alt="Night Palace picture"
+                  />
+                </div>
                 <h3 class="visiting__card-name">Night Palace</h3>
                 <p class="visiting__card-subscibtion">
                   360° Virtual Tour<br />
@@ -358,7 +368,7 @@
           </div>
         </div>
       </section>
-      <section class="video section" id="video">
+      <!-- <section class="video section" id="video">
         <div class="wrapper">
           <div class="video__caption">
             <h2 class="video__title title">Video journey</h2>
@@ -503,7 +513,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <section class="gallery section" id="gallery">
         <div class="wrapper">
           <h2 class="gallery__title title">art gallery</h2>
@@ -815,7 +825,7 @@
               <h5 class="overview-title">Overview</h5>
               <div class="overview-date">Friday, August 19</div>
               <div class="overview-time">16:30</div>
-              <div class="overview-type">Temporary exhibition</div>
+              <div class="overview-type">Permanent exhibition</div>
             </div>
             <div class="overview-cost">
               <div class="overview-basic">
@@ -991,30 +1001,18 @@
           </div>
         </div>
       </footer>
-      <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-      <script src=" js/gallery.js"></script>
-      <script src=" js/welcome.js"></script>
-      <script src=" js/header.js"></script>
-      <script src=" js/explore.js"></script>
-      <script src=" js/video.js"></script>
-      <script src=" js/video__slider.js"></script>
-      <script src=" js/tickets.js"></script>
-      <script
-        async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4jxLdX4-DNyuqKjJ3Kq7aiffh5n2dOk0&callback=initMap"
-      ></script>
-      <script>
-        function initMap() {
-            var dumbo = {lat: 48.86063139320586, lng:2.3377726799156946};
-            var mapOptions = {
-                center: dumbo,
-                zoom: 16
-            };
-            // 48.86063139320586, 2.3377726799156946
-            var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
-        }
-        initMap();
-    </script>
+      <script src=" js/welcome.js" async></script>
+      <script src=" js/header.js" async></script>
+      <script src=" js/explore.js" async></script>
+      <script src=" js/tickets.js" async></script>
+      <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+      <!-- <script src=" js/video.js"></script>
+      <script src=" js/video__slider.js"></script> -->
+      <script src=" js/gallery.js" defer></script>
+
+
+      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js" defer></script>
+      <script src="js/map.js" defer></script>
     </main>
   </body>
 </html>

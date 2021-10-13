@@ -9,6 +9,9 @@ let overviewTotal = document.querySelector(".overview-total-total");
 let overviewBasic = document.querySelector(".overview-basic-amount");
 let overviewSenior = document.querySelector(".overview-senior-amount");
 
+let basicText = document.querySelector('.overview-basic-text')
+let seniorText = document.querySelector('.overview-senior-text')
+
 let basicTotal = document.querySelector(".overview-basic-total");
 let seniorTotal = document.querySelector(".overview-senior-total");
 
@@ -103,19 +106,27 @@ function changeTicketsAmount(event) {
     inputSenior[0].value++;
     inputSenior[1].value++;
   }
+  ticketsCalc();
+}
+function ticketsCalc(){
+  let cost = 20;
+  if(overviewType.innerHTML == 'Temporary exhibition')
+    cost = 25;
+  else if(overviewType.innerHTML == 'Combined Admission')
+    cost = 40;
   tickets__total.innerHTML = `Total €${
-    inputBasic[0].value * 20 + inputSenior[0].value * 10
+    inputBasic[0].value * cost + inputSenior[0].value * cost/2
   }`;
   overviewTotal.innerHTML = `${
-    inputBasic[0].value * 20 + inputSenior[0].value * 10
+    inputBasic[0].value * cost + inputSenior[0].value * cost/2
   } €`;
-  basicTotal.innerHTML = `${inputBasic[0].value * 20} €`;
-  seniorTotal.innerHTML = `${inputSenior[0].value * 10} €`;
+  basicTotal.innerHTML = `${inputBasic[0].value * cost} €`;
+  seniorTotal.innerHTML = `${inputSenior[0].value * cost/2} €`;
   overviewBasic.innerHTML = inputBasic[0].value;
   overviewSenior.innerHTML = inputSenior[0].value;
-  checkValidation();
+  basicText.innerHTML = `Basic (${cost} €)`;
+  seniorText.innerHTML = `Basic (${cost/2} €)`;
 }
-
 function openModal() {
   modal.style.display = "flex";
   modal.animate(
@@ -160,6 +171,7 @@ function changeType(event) {
       typeSelection.options.selectedIndex = i;
     }
   }
+  ticketsCalc();
 }
 
 function checkValidation() {
@@ -243,12 +255,6 @@ function checkValidation() {
     timeForm.style.border = `1px solid  #303030`;
   }
 
-  if (overviewTotal.innerHTML == "0 €") {
-    bookingEntry.style.border = `1px solid red`;
-  } else {
-    bookingEntry.style.border = `1px solid  #303030`;
-  }
-
   if (!cardNum.value.match(visaReg) && !cardNum.value.match(mastercardReg)) {
     cardNum.style.border = `1px solid red`;
   } else {
@@ -310,10 +316,18 @@ typeSelection.addEventListener("change", () => {
       }
     }
   }
+  ticketsCalc();
 });
 
 bookBtn.addEventListener("click",createRipple);
-bookBtn.addEventListener("click",checkValidation);
+bookBtn.addEventListener("click",()=>{
+  if (overviewTotal.innerHTML == "0 €") {
+    bookingEntry.style.border = `1px solid red`;
+  } else {
+    bookingEntry.style.border = `1px solid  #303030`;
+  }
+  checkValidation();
+});
 ticketsBtn.addEventListener("click", openModal);
 closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => {
@@ -325,7 +339,6 @@ bookingEmail.addEventListener('change',  checkValidation)
 bookingTel.addEventListener('change',  checkValidation)
 dateForm.addEventListener('change',  checkValidation)
 timeForm.addEventListener('change',  checkValidation)
-overviewTotal.addEventListener('change',  checkValidation)
 cardNum.addEventListener('change',  checkValidation)
 cardExpMonth.addEventListener('change',  checkValidation)
 cardExpYear.addEventListener('change',  checkValidation)

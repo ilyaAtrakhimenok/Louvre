@@ -34,7 +34,7 @@ function translateNext(activeIndex, activeIndexSwitch) {
         }px)`,
       },
     ],
-    { duration: 520 }
+    { duration: 590, easing: 'ease-in-out' }
   );
   imgSlider.style.transform = `translateX(-${
     welcomeImgs[0].clientWidth * (5 - welcomeImgs.length + activeIndexSwitch)
@@ -52,7 +52,7 @@ function translatePrev(activeIndex, activeIndexSwitch) {
         }px`,
       },
     ],
-    { duration: 520 }
+    { duration: 590, easing: 'ease-in-out' }
   );
   imgSlider.style.transform = `translateX(-${
     activeIndexSwitch * welcomeImgs[0].clientWidth
