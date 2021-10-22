@@ -12,6 +12,9 @@ let overviewSenior = document.querySelector(".overview-senior-amount");
 let basicText = document.querySelector('.overview-basic-text')
 let seniorText = document.querySelector('.overview-senior-text')
 
+let entryBasicText = document.querySelector('.entry-basic-text');
+let entrySeniorText = document.querySelector('.entry-senior-text');
+
 let basicTotal = document.querySelector(".overview-basic-total");
 let seniorTotal = document.querySelector(".overview-senior-total");
 
@@ -43,16 +46,16 @@ let cardholder = document.getElementById("cardholder");
 let cardCVC = document.getElementById("card-cvc");
 
 class ticketForm {
-  date = new Date();
-  time = null;
-  name = null;
-  email = null;
-  phone = null;
-  type = null;
-  amountOfBasicTickets = null;
-  amountOfSeniorTickets = null;
-  total = null;
-  cardNumber = null;
+  date = new Date();//
+  time = null;//
+  name = null;//
+  email = null;//
+  phone = null;//
+  type = null;//
+  amountOfBasicTickets = null;//
+  amountOfSeniorTickets = null;//
+  total = null;//
+  cardNumber = null;//
   cardMonth = null;
   cardYear = null;
   cardholder = null;
@@ -60,6 +63,8 @@ class ticketForm {
 }
 
 let louvreForm = new ticketForm();
+
+
 function createRipple(event) {
   const button = event.currentTarget;
   let posBtn = button.getBoundingClientRect();
@@ -125,7 +130,12 @@ function ticketsCalc(){
   overviewBasic.innerHTML = inputBasic[0].value;
   overviewSenior.innerHTML = inputSenior[0].value;
   basicText.innerHTML = `Basic (${cost} €)`;
-  seniorText.innerHTML = `Basic (${cost/2} €)`;
+  entryBasicText.innerHTML = `Basic (${cost} €)`;
+  seniorText.innerHTML = `Senior (${cost/2} €)`;
+  entrySeniorText.innerHTML = `Senior (${cost/2} €)`;
+  louvreForm.amountOfBasicTickets = inputBasic[0].value;
+  louvreForm.amountOfSeniorTickets = inputSenior[0].value;
+  louvreForm.total = inputBasic[0].value * cost + inputSenior[0].value * cost/2;
 }
 function openModal() {
   modal.style.display = "flex";
@@ -175,7 +185,7 @@ function changeType(event) {
 }
 
 function checkValidation() {
-  const nameReg = /^[a-zA-Z ]{3,15}$/;
+  const nameReg = /^[a-zA-Z  ]{3,20}$/;
   const emailReg =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const phoneReg =
@@ -201,6 +211,7 @@ function checkValidation() {
 
     bookingName.style.marginBottom = `20px`;
     bookingName.style.border = `1px solid  #303030`;
+    louvreForm.name = bookingName.value;
   }
 
   if (!bookingEmail.value.match(emailReg)) {
@@ -221,6 +232,7 @@ function checkValidation() {
 
     bookingEmail.style.marginBottom = `20px`;
     bookingEmail.style.border = `1px solid  #303030`;
+    louvreForm.email = bookingEmail.value;
   }
 
   if (!bookingTel.value.match(phoneReg)) {
@@ -241,47 +253,70 @@ function checkValidation() {
 
     bookingTel.style.marginBottom = `20px`;
     bookingTel.style.border = `1px solid  #303030`;
+    louvreForm.phone = bookingTel.value;
   }
 
-  if (!dateForm.value) {
+  if (dateFormText.innerHTML == 'Date') {
     dateForm.style.border = `1px solid red`;
   } else {
     dateForm.style.border = `1px solid  #303030`;
+    louvreForm.date = dateFormText.innerHTML;
   }
 
-  if (!timeForm.value) {
+  if (timeFormText.innerHTML == 'Time') {
     timeForm.style.border = `1px solid red`;
   } else {
     timeForm.style.border = `1px solid  #303030`;
+    louvreForm.time = timeFormText.innerHTML;
   }
 
   if (!cardNum.value.match(visaReg) && !cardNum.value.match(mastercardReg)) {
     cardNum.style.border = `1px solid red`;
   } else {
     cardNum.style.border = `1px solid  #303030`;
+    louvreForm.cardNumber = cardNum.value;
   }
 
-  if (!cardExpMonth.value || cardExpMonth.value < 0) {
-    cardExpMonth.style.border = `1px solid red`;
-  } else {
-    cardExpMonth.style.border = `1px solid  #303030`;
-  }
-  if (!cardExpYear.value || cardExpYear.value < 0) {
-    cardExpYear.style.border = `1px solid red`;
-  } else {
-    cardExpYear.style.border = `1px solid  #303030`;
-  }
   if (!cardholder.value.match(nameReg)) {
     cardholder.style.border = `1px solid red`;
   } else {
+    console.log('cardholder')
     cardholder.style.border = `1px solid  #303030`;
     cardholder.value = cardholder.value.toUpperCase();
+    louvreForm.cardholder = cardholder.value;
   }
+  if (overviewTotal.innerHTML == "0 €") {
+    bookingEntry.style.border = `1px solid red`;
+  } else {
+    bookingEntry.style.border = `1px solid  #303030`;
+  }
+  if (!cardExpMonth.value || cardExpMonth.value < 0 ||cardExpMonth.value > 12) {
+    cardExpMonth.style.border = `1px solid red`;
+  } else {
+    cardExpMonth.style.border = `1px solid  #303030`;
+    louvreForm.cardMonth = cardExpMonth.value;
+  }
+  if (!cardExpYear.value || cardExpYear.value < 21 || cardExpYear.value > 40) {
+    cardExpYear.style.border = `1px solid red`;
+  } else {
+    cardExpYear.style.border = `1px solid  #303030`;
+    louvreForm.cardYear = cardExpYear.value;
+  }
+
   if (!cardCVC.value.match(cvcReg)) {
     cardCVC.style.border = `1px solid red`;
   } else {
     cardCVC.style.border = `1px solid  #303030`;
+    louvreForm.cvc = cardCVC.value;
   }
+  let isComplete = true;
+  for(el in louvreForm){
+    if(louvreForm[el] == null){
+      isComplete = false;
+    }
+  }
+  if(isComplete)
+    alert('The form has been completed successfully.')
 }
 dateForm.addEventListener("change", () => {
   let options = { weekday: "long", month: "long", day: "numeric" };
@@ -290,6 +325,12 @@ dateForm.addEventListener("change", () => {
     overviewDate.innerHTML = `${date.toLocaleDateString("en-US", options)}`;
     dateFormText.innerHTML = `${dateForm.value}`;
   }
+  if (dateFormText.innerHTML == 'Date') {
+    dateForm.style.border = `1px solid red`;
+  } else {
+    dateForm.style.border = `1px solid  #303030`;
+  }
+  dateForm.value = ' ';
 });
 timeForm.addEventListener("change", () => {
   let minutes =
@@ -300,9 +341,16 @@ timeForm.addEventListener("change", () => {
     parseInt(timeForm.value) >= 9 &&
     minutes % 30 == 0
   ) {
+    console.log(timeForm.value)
     overviewTime.innerHTML = `${timeForm.value}`;
     timeFormText.innerHTML = `${timeForm.value}`;
   }
+  if (timeFormText.innerHTML == 'Time') {
+    timeForm.style.border = `1px solid red`;
+  } else {
+    timeForm.style.border = `1px solid  #303030`;
+  }
+  timeForm.value = '';
 });
 typeSelection.addEventListener("change", () => {
   if (typeSelection.value != "Tickets type") {
@@ -316,31 +364,15 @@ typeSelection.addEventListener("change", () => {
       }
     }
   }
+  louvreForm.type = overviewType.innerHTML;
   ticketsCalc();
 });
 
 bookBtn.addEventListener("click",createRipple);
-bookBtn.addEventListener("click",()=>{
-  if (overviewTotal.innerHTML == "0 €") {
-    bookingEntry.style.border = `1px solid red`;
-  } else {
-    bookingEntry.style.border = `1px solid  #303030`;
-  }
-  checkValidation();
-});
+bookBtn.addEventListener("click", checkValidation);
 ticketsBtn.addEventListener("click", openModal);
 closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => {
   if (event.target.className == "modal") closeModal();
 });
 
-bookingName.addEventListener('change',  checkValidation)
-bookingEmail.addEventListener('change',  checkValidation)
-bookingTel.addEventListener('change',  checkValidation)
-dateForm.addEventListener('change',  checkValidation)
-timeForm.addEventListener('change',  checkValidation)
-cardNum.addEventListener('change',  checkValidation)
-cardExpMonth.addEventListener('change',  checkValidation)
-cardExpYear.addEventListener('change',  checkValidation)
-cardholder.addEventListener('change',  checkValidation)
-cardCVC.addEventListener('change',  checkValidation)

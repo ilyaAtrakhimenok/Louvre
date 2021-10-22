@@ -27,6 +27,10 @@
       href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href=" css/reset.css" />
     <link rel="stylesheet" href=" css/style.css" />
   </head>
@@ -368,7 +372,7 @@
           </div>
         </div>
       </section>
-      <!-- <section class="video section" id="video">
+      <section class="video section" id="video">
         <div class="wrapper">
           <div class="video__caption">
             <h2 class="video__title title">Video journey</h2>
@@ -427,60 +431,49 @@
             </div>
 
             <div class="slider">
-              <div
-                class="slider-content"
-                onclick="changeActiveElementImg(this)"
-              >
-                <div class="item active" id="playerId">
-                  <iframe
-                    class="item__video"
-                    loading="lazy"
-                    src="https://www.youtube.com/embed/zp1BXPX8jcU"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+              <div class="slider-content">
+                <div
+                  class="item active active-youtube"
+                  onclick="changeActiveElementImg(this)"
+                >
+                  <img
+                    src="//img.youtube.com/vi/zp1BXPX8jcU/mqdefault.jpg"
+                    alt="video from youtube"
+                    class="youtube-img"
+                  />
+                  <i class="fab fa-youtube"></i>
                 </div>
                 <div class="item" onclick="changeActiveElementImg(this)">
-                  <iframe
-                    class="item__video"
-                    loading="lazy"
-                    src="https://www.youtube.com/embed/Vi5D6FKhRmo"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+                  <img
+                    src="//img.youtube.com/vi/Vi5D6FKhRmo/mqdefault.jpg"
+                    alt="video from youtube"
+                    class="youtube-img"
+                  />
+                  <i class="fab fa-youtube"></i>
                 </div>
                 <div class="item" onclick="changeActiveElementImg(this)">
-                  <iframe
-                    id="first__video"
-                    class="item__video"
-                    loading="lazy"
-                    src="https://www.youtube.com/embed/NOhDysLnTvY"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+                  <img
+                    src="//img.youtube.com/vi/NOhDysLnTvY/mqdefault.jpg"
+                    alt="video from youtube"
+                    class="youtube-img"
+                  />
+                  <i class="fab fa-youtube"></i>
                 </div>
                 <div class="item" onclick="changeActiveElementImg(this)">
-                  <iframe
-                    class="item__video"
-                    loading="lazy"
-                    src="https://www.youtube.com/embed/aWmJ5DgyWPI"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+                  <img
+                    src="//img.youtube.com/vi/aWmJ5DgyWPI/mqdefault.jpg"
+                    alt="video from youtube"
+                    class="youtube-img"
+                  />
+                  <i class="fab fa-youtube"></i>
                 </div>
                 <div class="item" onclick="changeActiveElementImg(this)">
-                  <iframe
-                    class="item__video"
-                    loading="lazy"
-                    src="https://www.youtube.com/embed/2OR0OCr6uRE"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+                  <img
+                    src="//img.youtube.com/vi/2OR0OCr6uRE/mqdefault.jpg"
+                    alt="video from youtube"
+                    class="youtube-img"
+                  />
+                  <i class="fab fa-youtube"></i>
                 </div>
               </div>
 
@@ -513,12 +506,12 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
       <section class="gallery section" id="gallery">
         <div class="wrapper">
           <h2 class="gallery__title title">art gallery</h2>
           <div class="picture-container">
-            <div class="picture-inner-container js-masonry">
+            <div class="picture-inner-container">
               <img
                 src=" assets/img/galery/galery2.jpg"
                 alt="gallety picture"
@@ -718,8 +711,29 @@
                     min="09:00"
                     max="18:00"
                     step="1800"
+                    list="times"
                     required
                   />
+                  <datalist id="times">
+                    <option value="09:00"></option>
+                    <option value="09:30"></option>
+                    <option value="10:00"></option>
+                    <option value="10:30"></option>
+                    <option value="11:00"></option>
+                    <option value="11:30"></option>
+                    <option value="13:00"></option>
+                    <option value="13:30"></option>
+                    <option value="14:00"></option>
+                    <option value="14:30"></option>
+                    <option value="15:00"></option>
+                    <option value="15:30"></option>
+                    <option value="16:00"></option>
+                    <option value="16:30"></option>
+                    <option value="17:00"></option>
+                    <option value="17:30"></option>
+                    <option value="18:00"></option>
+                  </datalist>
+
                   <span id="time-form-text">Time</span>
                 </div>
               </div>
@@ -765,7 +779,7 @@
             <div class="booking-entry border-form">
               <h5 class="entry-title">Entry ticket</h5>
               <div class="entry-basic">
-                <div class="entry-text">Basic 18+ (20 €)</div>
+                <div class="entry-text entry-basic-text">Basic 18+ (20 €)</div>
                 <div class="enrty-counter">
                   <button
                     class="tickets__btn minus-basic"
@@ -792,7 +806,9 @@
                 </div>
               </div>
               <div class="entry-senior">
-                <div class="entry-text">Senior 65+ (10 €)</div>
+                <div class="entry-text entry-senior-text">
+                  Senior 65+ (10 €)
+                </div>
                 <div class="enrty-counter">
                   <button
                     class="tickets__btn minus-senior"
@@ -844,54 +860,61 @@
                 <div class="overview-total-total">0 €</div>
               </div>
             </div>
-            <div class="overview-cards">
-              <div class="forward-card-container">
-                <input
-                  type="text"
-                  name="card number"
-                  id="card-number"
-                  autocomplete="off"
-                  placeholder="4000 1234 1234 1234"
-                  required
-                />
-                <input
-                  type="number"
-                  name="expiration date"
-                  id="expiration-date-month"
-                  autocomplete="off"
-                  required
-                />
-                <input
-                  type="number"
-                  name="expiration date"
-                  id="expiration-date-year"
-                  autocomplete="off"
-                  required
-                />
-                <input
-                  type="text"
-                  name="cardholder name"
-                  id="cardholder"
-                  autocomplete="off"
-                  placeholder="NAME SURNAME"
-                  required
-                />
-                <img
-                  src=" assets/img/forward.jpg"
-                  alt="forward card"
-                  class="forward-card"
-                />
+            <div class="book-wrapper">
+              <div class="overview-cards">
+                <div class="forward-card-container">
+                  <input
+                    type="text"
+                    name="card number"
+                    id="card-number"
+                    autocomplete="off"
+                    placeholder="4000 1234 1234 1234"
+                    required
+                  />
+                  <input
+                    type="number"
+                    name="expiration date"
+                    id="expiration-date-month"
+                    autocomplete="off"
+                    required
+                  />
+                  <input
+                    type="number"
+                    name="expiration date"
+                    id="expiration-date-year"
+                    autocomplete="off"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="cardholder name"
+                    id="cardholder"
+                    autocomplete="off"
+                    placeholder="NAME SURNAME"
+                    required
+                  />
+                  <img
+                    src=" assets/img/forward.jpg"
+                    alt="forward card"
+                    class="forward-card"
+                  />
+                </div>
+                <div class="back-card-container">
+                  <input
+                    type="text"
+                    name="card number"
+                    id="card-cvc"
+                    required
+                  />
+                  <img
+                    src=" assets/img/back.jpg"
+                    alt="back card"
+                    class="back-card"
+                  />
+                </div>
               </div>
-              <div class="back-card-container">
-                <input type="text" name="card number" id="card-cvc" required />
-                <img
-                  src=" assets/img/back.jpg"
-                  alt="back card"
-                  class="back-card"
-                />
-              </div>
+              <button id="overview-book">Book</button>
             </div>
-            <button id="overview-book">Book</button>
           </div>
         </div>
       </div>
@@ -906,7 +929,7 @@
                 Musee du Louvre
               </h3>
               <ul>
-                <li class="info-item">address 75001 Paris, France</li>
+                <li class="info-item">address: 75001 Paris, France</li>
                 <li class="info-item">
                   <a href="tel:+330140205050" class="info-link"
                     >phone: +33(0) 1 40 20 50 50</a
@@ -997,21 +1020,27 @@
           <div class="inner-bottom">
             <p class="inner-bottom__item">© 2021</p>
             <p class="inner-bottom__item">The Rolling Scopes School</p>
-            <p class="inner-bottom__item">ilyaAtrakhimenok</p>
+            <p class="inner-bottom__item">
+              <a class="media__link" href="https://github.com/ilyaAtrakhimenok"
+                >ilyaAtrakhimenok</a
+              >
+            </p>
           </div>
         </div>
       </footer>
+    <script src=" js/gallery.js" defer></script>
       <script src=" js/welcome.js" async></script>
       <script src=" js/header.js" async></script>
       <script src=" js/explore.js" async></script>
       <script src=" js/tickets.js" async></script>
-      <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
-      <!-- <script src=" js/video.js"></script>
-      <script src=" js/video__slider.js"></script> -->
-      <script src=" js/gallery.js" defer></script>
+      <script src=" js/video.js"></script>
+      <script src=" js/video__slider.js"></script>
 
 
-      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js" defer></script>
+      <script
+        src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"
+        defer
+      ></script>
       <script src="js/map.js" defer></script>
     </main>
   </body>

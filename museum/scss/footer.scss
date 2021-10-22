@@ -62,6 +62,15 @@
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    a{
+      @include font("Roboto", 22px, 26px, $white, 200);
+      opacity: 80%;
+      &:hover {
+        color: $gold;
+        opacity: 100%;
+        transition-duration: 0.2s;
+      }
+    }
   }
 }
 @media (max-width: 1024px) {

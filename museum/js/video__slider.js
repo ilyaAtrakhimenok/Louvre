@@ -20,12 +20,20 @@ let posters = [
   "assets/video/poster3.jpg",
   "assets/video/poster4.jpg",
 ];
+let youtube = [
+  "https://www.youtube.com/embed/zp1BXPX8jcU",
+  "https://www.youtube.com/embed/Vi5D6FKhRmo",
+  "https://www.youtube.com/embed/NOhDysLnTvY",
+  "https://www.youtube.com/embed/aWmJ5DgyWPI",
+  "https://www.youtube.com/embed/2OR0OCr6uRE"
+]
 function changeVideo() {
   movie.src = videos[findActiveIndex(sliders, "active")];
   movie.poster = posters[findActiveIndex(sliders, "active")];
   progRange.value = 0;
   changeRangeProgress("progress");
   toggleBtn.innerHTML = "►";
+  videoPlayBtn.style.display = 'block';
 }
 function findActiveIndex(arr, classActive) {
   for (let i = 0; i < arr.length; i++) {
@@ -88,15 +96,17 @@ function changeActiveElementDot(elem) {
   changeVideo();
 }
 function changeActiveElementImg(elem) {
-  // let activeIndex = findActiveIndex(sliders, "active");
-  // sliders[activeIndex].classList.remove("active");
-  // elem.parentElement.classList.add("active");
-
-  // activeIndex = findActiveIndex(dots, "active-dot");
-  // dots[activeIndex].classList.remove("active-dot");
-  // activeIndex = findActiveIndex(sliders, "active");
-  // dots[activeIndex].classList.add("active-dot");
-  // changeVideo();
+  elem.querySelector('img').style.display = 'none';
+  elem.querySelector('.fa-youtube').style.display = 'none';
+  let activeIndex = findActiveIndex(sliders, "active-youtube");
+  sliders[activeIndex].classList.remove("active-youtube");
+  elem.classList.add("active-youtube");
+  activeIndex = findActiveIndex(sliders, "active-youtube");
+  elem.insertAdjacentHTML("beforeend", `<iframe width="100%" height="100%" src=${youtube[activeIndex]} 
+  title="YouTube video player" frameborder="0" 
+  allow="accelerometer; clipboard-write; encrypted-media; 
+  gyroscope; 
+  picture-in-picture" allowfullscreen></iframe>`)
 }
 function hideSliders(activeIndex) {
   if (movie.clientWidth > 768) {

@@ -52,7 +52,6 @@ async function showMenu() {
     isFinish = true;
   }
 }
-
 async function cancelMenu() {
   if (isFinish) {
     isFinish = false;
@@ -65,17 +64,39 @@ async function cancelMenu() {
           easing: "ease-in-out",
         });
       });
-      hideMenu();
     } else {
       headerConatcts.style.display = "none";
       headerInner.style.display = "flex";
-      headerImgs.style.display = "none";
-      hideMenu();
+      headerImgs.style.display = "none"; 
     }
+    hideMenu();
     isFinish = true;
   }
 }
-
+async function smoothlyHideNav() {
+  for (let i = 0; i < menuItems.length; i++) {
+    await delay(220).then(() => {
+      menuItems[i].animate(
+        [{ transform: "translateX(0)" }, { transform: "translateX(-100%)" }],
+        { duration: 220 }
+      );
+      menuItems[i].style.transform = "translateX(-200%)";
+    });
+  }
+}
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+function hideMenu() {
+  nav.style.display = "none";
+  cancel.style.display = "none";
+  burger.style.display = "block";
+  text.style.display = "block";
+  menuItems.forEach((item) => {
+    item.style.display = "none";
+    item.style.transform = "translateX(0)";
+  });
+}
 function changeAdaptive() {
   if (window.innerWidth > 1024) {
     nav.style.display = "block";
@@ -89,30 +110,6 @@ function changeAdaptive() {
   }
   isFinish = true;
 }
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-async function smoothlyHideNav() {
-  for (let i = 0; i < menuItems.length; i++) {
-    await delay(220).then(() => {
-      menuItems[i].animate(
-        [{ transform: "translateX(0)" }, { transform: "translateX(-100%)" }],
-        { duration: 220 }
-      );
-      menuItems[i].style.transform = "translateX(-200%)";
-    });
-  }
-}
-function hideMenu() {
-  nav.style.display = "none";
-  cancel.style.display = "none";
-  burger.style.display = "block";
-  text.style.display = "block";
-  menuItems.forEach((item) => {
-    item.style.display = "none";
-    item.style.transform = "translateX(0)";
-  });
-}
 window.addEventListener("click", function (event) {
   if (
     nav.style.display == "block" &&
@@ -124,9 +121,8 @@ window.addEventListener("click", function (event) {
   }
 });
 window.addEventListener("resize", () => {
-  if (!(innerHeight - window.innerHeight)) {
+  if(window.innerWidth > 520)
     changeAdaptive();
-  }
 });
 cancel.addEventListener("click", cancelMenu);
 burger.addEventListener("click", showMenu);

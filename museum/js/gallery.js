@@ -23,37 +23,26 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-function masn() {
-  var elem = document.querySelector(".picture-inner-container");
-  if (window.innerWidth > 800) {
-    var msnry = new Masonry(elem, {
-      itemSelector: ".gallery__img",
-      columnWidth: picture.clientWidth / 3,
-      horizontalOrder: true,
-    });
-    for(let i = 0; i < picAll.length; i++){
-      picAll[i].width =picture.clientWidth / 3 - 36;
+function scrollGalleryAnimate(element) {
+  element.forEach((item) => {
+    let offsetBlock = window.pageYOffset + window.innerHeight,
+      offsetImg = item.getBoundingClientRect().top + window.pageYOffset;
+    if (offsetBlock >= offsetImg) {
+      if (!item.classList.contains("animated")) {
+        item.classList.add("animated");
+      }
+    } else {
+      if (item.classList.contains("animated")) {
+        item.classList.remove("animated");
+      }
     }
-  } else {
-    var msnry = new Masonry(elem, {
-      itemSelector: ".gallery__img",
-      columnWidth: picture.clientWidth / 2,
-      horizontalOrder: true,
-    });
-   for(let i = 0; i < picAll.length; i++){
-     picAll[i].width = picture.clientWidth / 2 - 16;
-   }
-  }
-
+  });
 }
 
 shuffle(galleryImgs);
 for (let i = 0; i < picAll.length; i++) {
   picAll[i].src = `assets/img/galery/${galleryImgs[i]}`;
 }
-picAll[0].style.marginTop = "50px";
-picAll[10].style.marginTop = "50px";
-masn();
-window.addEventListener('resize', masn);
-
-
+window.addEventListener("scroll", () => {
+  scrollGalleryAnimate(picAll);
+});

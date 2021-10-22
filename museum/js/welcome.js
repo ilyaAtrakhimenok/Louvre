@@ -143,7 +143,7 @@ function handleTouchMove(evt) {
 
     let xDiff = xDown - xUp;
                                                                          
-    if ( Math.abs( xDiff)) {
+    if ( Math.abs( xDiff) > 5) {
         if ( xDiff > 0 ) {
           moveLeft();
         } else {
@@ -154,10 +154,11 @@ function handleTouchMove(evt) {
     yDown = null;                                             
 };
 controlSize();
-document.addEventListener('touchstart', handleTouchStart, false);        
-document.addEventListener('touchmove', handleTouchMove, false);
+
 window.addEventListener("resize", controlSize);
 rightArrow.addEventListener("click",moveLeft );
 leftArrow.addEventListener("click", moveRight);
 welcomeInner.addEventListener("mousedown", mouseDown);
 welcomeInner.addEventListener("mouseup", mouseUp);
+welcomeInner.addEventListener('touchstart', handleTouchStart, false);        
+welcomeInner.addEventListener('touchmove', handleTouchMove, false);

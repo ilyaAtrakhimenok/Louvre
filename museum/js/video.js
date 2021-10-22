@@ -15,6 +15,7 @@ let timeoutMouseMove = null;
 let timeoutSpeed = null;
 
 function changeRangeProgress(range) {
+  console.log('range');
   if (range == "volume") {
     if (volume.value == 0)
       volumeBtn.firstElementChild.className = "fas fa-volume-mute";
@@ -44,11 +45,13 @@ function toggleSwitcher() {
     videoPlayBtn.style.display = "none";
   } else {
     video.pause();
-    toggleBtn.innerHTML = "►";
+    toggleBtn.firstChild.remove();
+    toggleBtn.insertAdjacentHTML('beforeend','<i class="fas fa-play"></i>');
     videoPlayBtn.style.display = "block";
   }
 }
 function playProc() {
+  console.log('play');
   let val = Math.ceil((video.currentTime / video.duration) * 100);
   if (progress.value - val > 2 || progress.value - val < -2) {
     val = progress.value;
@@ -76,7 +79,7 @@ function changeScreenMode() {
 function hideControls() {
   clearTimeout(timeoutMouseMove);
   timeoutMouseMove = setTimeout(function () {
-    controls.style.transform = "translateY(100%)";
+    controls.style.transform = "translateY(120%)";
   }, 7000);
   controls.style.transform = "translateY(0)";
 }
@@ -148,7 +151,6 @@ function procKeyPress(key) {
     }
   }
 }
-console.log('Уважаемые проверяющие, обновляйе страницу после изменения размеров!')
 videoPlayBtn.addEventListener("mouseover", () => {
   videoPlayBtn.src = "assets/svg/play__center_hover.svg";
 });
@@ -160,7 +162,7 @@ video.addEventListener("timeupdate", playProc);
 volume.addEventListener("mousemove", () => changeRangeProgress("volume"));
 toggleBtn.addEventListener("click", toggleSwitcher);
 video.addEventListener("ended", () => {
-  toggleBtn.innerHTML = "►";
+  toggleBtn.insertAdjacentHTML('beforeend','<i class="fas fa-play"></i>');
   controls.style.transform = "translateY(0)";
   video.load();
   progress.value = 0;
@@ -179,3 +181,5 @@ video.addEventListener("click", () => {
 volumeBtn.addEventListener("click", changeVolume);
 document.addEventListener("keydown", procKeyPress);
 videoPlayBtn.addEventListener("click", toggleSwitcher);
+volume.addEventListener('touchmove', () => changeRangeProgress("volume"), false);
+progress.addEventListener('touchmove', () => changeRangeProgress("volume"), false);

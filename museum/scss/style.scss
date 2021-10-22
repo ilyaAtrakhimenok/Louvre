@@ -94,7 +94,7 @@ html {
 
 @media (max-width: 420px) {
   .parallax {
-    height: 300px;
+    height: 200px;
   }
   .title {
     @include font("Forum", 28px, 40px, $gold);
