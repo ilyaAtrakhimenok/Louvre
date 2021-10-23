@@ -1,11 +1,14 @@
-let sliders = document.querySelectorAll(".item");
+let sliders = document.querySelectorAll(".swiper-slide");
+let swiperSlide = document.querySelector(".swiper-wrapper")
 let dots = document.querySelectorAll(".slider-dot");
-let leftArrowVideo = document.querySelector(".left-arrow");
-let rightArrowVideo = document.querySelector(".right-arrow");
+let leftArrowVideo = document.querySelector(".swiper-button-next");
+let rightArrowVideo = document.querySelector(".swiper-button-prev");
+let pagination = document.querySelector(".swiper-pagination");
 let movie = document.querySelector(".video__movie");
 let progRange = document.querySelector(".progress-range");
 let firstVideo = document.getElementById("first__video");
 let videoWidth = 450;
+
 let videos = [
   "assets/video/video.mp4",
   "assets/video/video1.mp4",
@@ -28,12 +31,27 @@ let youtube = [
   "https://www.youtube.com/embed/2OR0OCr6uRE"
 ]
 function changeVideo() {
-  movie.src = videos[findActiveIndex(sliders, "active")];
-  movie.poster = posters[findActiveIndex(sliders, "active")];
+  if(findActiveIndex(sliders, "swiper-slide-active") >= 0 ){
+  movie.src = videos[findActiveIndex(sliders, "swiper-slide-active")];
+  movie.poster = posters[findActiveIndex(sliders, "swiper-slide-active")];
+  }
+  else{
+    movie.src = videos[findActiveIndex(sliders, "swiper-slide-duplicate-active")];
+    movie.poster = posters[findActiveIndex(sliders, "swiper-slide-duplicate-active")];
+  }
   progRange.value = 0;
   changeRangeProgress("progress");
   toggleBtn.innerHTML = "►";
   videoPlayBtn.style.display = 'block';
+  stopYouTube();
+}
+function stopYouTube(){
+  let videos = document.querySelectorAll('.playerYoutube');
+  videos.forEach((item)=>{
+    item.parentElement.querySelector('img').style.display = 'block';
+    item.parentElement.querySelector('i').style.display = 'block';
+    item.remove();
+  })
 }
 function findActiveIndex(arr, classActive) {
   for (let i = 0; i < arr.length; i++) {
@@ -43,150 +61,51 @@ function findActiveIndex(arr, classActive) {
   }
 }
 
-function moveNext() {
-  let activeIndex = findActiveIndex(sliders, "active");
-
-  if (activeIndex == sliders.length - 1) {
-    sliders[activeIndex].classList.remove("active");
-    sliders[0].classList.add("active");
-
-    dots[activeIndex].classList.remove("active-dot");
-    dots[0].classList.add("active-dot");
-    hideSliders(0);
-  } else {
-    sliders[activeIndex].classList.remove("active");
-    sliders[activeIndex + 1].classList.add("active");
-
-    dots[activeIndex].classList.remove("active-dot");
-    dots[activeIndex + 1].classList.add("active-dot");
-    hideSliders(activeIndex + 1);
-  }
-  changeVideo();
-}
-function movePrev() {
-  let activeIndex = findActiveIndex(sliders, "active");
-
-  if (activeIndex == 0) {
-    sliders[activeIndex].classList.remove("active");
-    sliders[sliders.length - 1].classList.add("active");
-
-    dots[activeIndex].classList.remove("active-dot");
-    dots[sliders.length - 1].classList.add("active-dot");
-    hideSliders(sliders.length - 1);
-  } else {
-    sliders[activeIndex].classList.remove("active");
-    sliders[activeIndex - 1].classList.add("active");
-
-    dots[activeIndex].classList.remove("active-dot");
-    dots[activeIndex - 1].classList.add("active-dot");
-    hideSliders(activeIndex - 1);
-  }
-  changeVideo();
-}
-
-function changeActiveElementDot(elem) {
-  let activeIndex = findActiveIndex(dots, "active-dot");
-  dots[activeIndex].classList.remove("active-dot");
-  elem.classList.add("active-dot");
-  activeIndex = findActiveIndex(sliders, "active");
-  sliders[activeIndex].classList.remove("active");
-  activeIndex = findActiveIndex(dots, "active-dot");
-  sliders[activeIndex].classList.add("active");
-  hideSliders(activeIndex);
-  changeVideo();
-}
-function changeActiveElementImg(elem) {
-  elem.querySelector('img').style.display = 'none';
-  elem.querySelector('.fa-youtube').style.display = 'none';
-  let activeIndex = findActiveIndex(sliders, "active-youtube");
-  sliders[activeIndex].classList.remove("active-youtube");
-  elem.classList.add("active-youtube");
-  activeIndex = findActiveIndex(sliders, "active-youtube");
-  elem.insertAdjacentHTML("beforeend", `<iframe width="100%" height="100%" src=${youtube[activeIndex]} 
-  title="YouTube video player" frameborder="0" 
-  allow="accelerometer; clipboard-write; encrypted-media; 
+function runYoutube(elem) {
+  if(elem.target.className === 'fab fa-youtube'){
+  stopYouTube();
+  let height = swiperSlide.clientHeight;
+  elem = elem.target;
+  elem.parentElement.insertAdjacentHTML("beforeend", `<iframe class="playerYoutube" height=${height}px src=${youtube[elem.parentElement.dataset.swiperSlideIndex]} 
+  title="YouTube video player" frameborder="0" allowfullscreen="1"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
   gyroscope; 
   picture-in-picture" allowfullscreen></iframe>`)
-}
-function hideSliders(activeIndex) {
-  if (movie.clientWidth > 768) {
-    if (activeIndex == 0) {
-      for (let i = 0; i < sliders.length; i++) {
-        if (i != activeIndex && i != activeIndex + 1 && i != activeIndex + 2) {
-          sliders[i].style.display = "none";
-        } else {
-          sliders[i].style.display = "block";
-        }
-      }
-    } else if (activeIndex == sliders.length - 1) {
-      for (let i = 0; i < sliders.length; i++) {
-        if (i != activeIndex && i != activeIndex - 1 && i != activeIndex - 2) {
-          sliders[i].style.display = "none";
-        } else {
-          sliders[i].style.display = "block";
-        }
-      }
-    } else {
-      for (let i = 0; i < sliders.length; i++) {
-        if (i != activeIndex && i != activeIndex + 1 && i != activeIndex - 1) {
-          sliders[i].style.display = "none";
-        } else {
-          sliders[i].style.display = "block";
-        }
-      }
-    }
-  } else {
-    if (activeIndex == 0) {
-      for (let i = 0; i < sliders.length; i++) {
-        if (i != activeIndex && i != activeIndex + 1) {
-          sliders[i].style.display = "none";
-        } else {
-          sliders[i].style.display = "block";
-        }
-      }
-    } else if (activeIndex == sliders.length - 1) {
-      for (let i = 0; i < sliders.length; i++) {
-        if (i != activeIndex && i != activeIndex - 1) {
-          sliders[i].style.display = "none";
-        } else {
-          sliders[i].style.display = "block";
-        }
-      }
-    } else {
-      for (let i = 0; i < sliders.length; i++) {
-        if (i != activeIndex && i != activeIndex + 1) {
-          sliders[i].style.display = "none";
-        } else {
-          sliders[i].style.display = "block";
-        }
-      }
-    }
+   
+  elem.style.display = 'none';
+  elem.previousElementSibling.style.display = 'none';
   }
-}
-function resize() {
-  if (movie.clientWidth > 768 && movie.clientWidth < 1480) {
-    sliders.forEach((item) => {
-      item.style.width = `${(movie.clientWidth * videoWidth) / 1480}px`;
-      item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
-    });
-  }
-  if (movie.clientWidth > 480 && movie.clientWidth < 768) {
-    sliders.forEach((item) => {
-      item.style.width = `${(movie.clientWidth * (videoWidth - 90)) / 768}px`;
-      item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
-    });
-  }
-  if (movie.clientWidth < 480) {
-    sliders.forEach((item) => {
-      item.style.width = `${(movie.clientWidth * (videoWidth - 220)) / 480}px`;
-      item.style.height = `${(parseInt(item.style.width) * 5) / 9}px`;
-    });
-  }
-  hideSliders(findActiveIndex(sliders, "active"));
+
 }
 
-resize();
-hideSliders(findActiveIndex(sliders, "active"));
-window.addEventListener("resize", resize);
-rightArrowVideo.addEventListener("click", moveNext);
-leftArrowVideo.addEventListener("click", movePrev);
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 3,
+  spaceBetween: 30,
+centeredSlides: true,
+speed: 600,
+loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    320: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        centeredSlides: false,
+    },
+    769: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+    }
+  }
+});
+swiperSlide.addEventListener('click', runYoutube);
+pagination.addEventListener("click", changeVideo);
+rightArrowVideo.addEventListener("click", changeVideo);
+leftArrowVideo.addEventListener("click", changeVideo);

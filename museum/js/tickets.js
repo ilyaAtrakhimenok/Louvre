@@ -367,7 +367,6 @@ typeSelection.addEventListener("change", () => {
   louvreForm.type = overviewType.innerHTML;
   ticketsCalc();
 });
-
 bookBtn.addEventListener("click",createRipple);
 bookBtn.addEventListener("click", checkValidation);
 ticketsBtn.addEventListener("click", openModal);

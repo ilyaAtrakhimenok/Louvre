@@ -134,93 +134,93 @@
   }
 }
 
-.slider {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  max-width: 100%;
+:root {
+  --swiper-navigation-size: 30px;
+  --swiper-pagination-bullet-height: 12px;
+  --swiper-pagination-bullet-size: 12px;
+  --swiper-pagination-bullet-horizontal-gap: 10px;
+  --swiper-pagination-color: #333333;
+}
+.swiper {
+  position: relative;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 70px;
   height: auto;
-  margin-top: 30px;
-  .slider-content {
-    display: flex;
-    max-width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    .item {
-      position: relative;
-      width: 450px;
-      height: 250px;
-      transform: scale(0.9);
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .active{
-      transform: scale(1);
-    }
-    .fa-youtube {
-      position: absolute;
-      top: calc(50% - 32px);
-      left: calc(50% - 32px);
-      height: 64px;
-      width: 64px;
-      font-size: 64px;
-      transition-duration: 0.2s;
-      &:hover {
-        color: red;
-      }
-    }
-    .youtube-img {
-      width: 100%;
-      height: 100%;
-    }
-    .active {
-      opacity: 1;
-    }
+}
+.swiper-wrapper{
+  &:hover{
+    cursor: grab  
   }
 }
-
-.slider-nav {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+.swiper-slide {
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  height: auto;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
-  margin-top: 40px;
-  .left-arrow,
-  .right-arrow,
-  .slider-dot {
-    background: none;
-    border: none;
-    outline: none;
-  }
-  .left-arrow,
-  .right-arrow {
-    width: 16px;
-    height: 16px;
-    color: $lite-gray;
-    &:hover {
-      color: $lite-black;
-    }
-  }
-  .right-arrow {
-    margin-left: 10px;
-  }
-  .slider-dot {
-    width: 12px;
-    height: 12px;
-    background: $lite-gray;
-    border-radius: 6px;
-    transition-duration: 0.2s;
-    margin-left: 20px;
-    &:hover {
-      box-shadow: inset 0 0 0 1px $lite-black;
-    }
-  }
-  .active-dot {
-    background: $lite-black;
-  }
 }
 
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide iframe {
+  display: block;
+  width: 100%;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: calc(100% - 22px);
+  color: $lite-gray;
+      &:hover {
+        color: $lite-black;
+      }
+}
+.swiper-button-next {
+  right: calc(50% - 120px);
+  &:after{
+    content: "»";
+  }
+}
+.swiper-button-prev {
+  left: calc(50% - 120px);
+  &:after{
+    content: "«";
+  }
+}
+.swiper-pagination-bullet:hover{
+  box-shadow: inset 0 0 0 1px $lite-black;
+}
+.fa-youtube {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  height: 64px;
+  width: 64px;
+  font-size: 64px;
+  transition-duration: 0.2s;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}
 @media (max-width: 1024px) {
   .slider {
     .slider-content {
@@ -257,10 +257,9 @@
 }
 
 @media (max-width: 768px) {
-  .main {
-    .video {
-      padding-bottom: 80px;
-    }
+  .swiper {
+    padding-top: 20px;
+    padding-bottom:50px;
   }
   .player__controls {
     padding-bottom: 12px;
@@ -273,7 +272,7 @@
       height: 30px;
       font-size: 20px;
     }
-    .range{
+    .range {
       &::-webkit-slider-thumb {
         width: 15px;
         height: 15px;
@@ -371,5 +370,13 @@
     .slider-dot {
       margin-left: 10px;
     }
+  }
+  .fa-youtube {
+    position: absolute;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
   }
 }

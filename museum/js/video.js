@@ -15,7 +15,6 @@ let timeoutMouseMove = null;
 let timeoutSpeed = null;
 
 function changeRangeProgress(range) {
-  console.log('range');
   if (range == "volume") {
     if (volume.value == 0)
       volumeBtn.firstElementChild.className = "fas fa-volume-mute";
@@ -43,6 +42,7 @@ function toggleSwitcher() {
     video.play();
     toggleBtn.innerHTML = "❚❚";
     videoPlayBtn.style.display = "none";
+    stopYouTube();
   } else {
     video.pause();
     toggleBtn.firstChild.remove();
@@ -51,7 +51,6 @@ function toggleSwitcher() {
   }
 }
 function playProc() {
-  console.log('play');
   let val = Math.ceil((video.currentTime / video.duration) * 100);
   if (progress.value - val > 2 || progress.value - val < -2) {
     val = progress.value;

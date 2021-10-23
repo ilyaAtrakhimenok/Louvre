@@ -31,6 +31,10 @@
       href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
       rel="stylesheet"
     />
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
     <link rel="stylesheet" href=" css/reset.css" />
     <link rel="stylesheet" href=" css/style.css" />
   </head>
@@ -429,80 +433,52 @@
                 <p class="speed">1x</p>
               </div>
             </div>
-
-            <div class="slider">
-              <div class="slider-content">
-                <div
-                  class="item active active-youtube"
-                  onclick="changeActiveElementImg(this)"
-                >
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide active-youtube"> 
                   <img
-                    src="//img.youtube.com/vi/zp1BXPX8jcU/mqdefault.jpg"
-                    alt="video from youtube"
-                    class="youtube-img"
-                  />
-                  <i class="fab fa-youtube"></i>
+                  src="//img.youtube.com/vi/zp1BXPX8jcU/mqdefault.jpg"
+                  alt="video from youtube"
+                  class="youtube-img"
+                />
+                <i class="fab fa-youtube"></i>
+              </div>
+                <div class="swiper-slide">
+                  <img
+                  src="//img.youtube.com/vi/Vi5D6FKhRmo/mqdefault.jpg"
+                  alt="video from youtube"
+                  class="youtube-img"
+                />
+                <i class="fab fa-youtube"></i>
                 </div>
-                <div class="item" onclick="changeActiveElementImg(this)">
+                <div class="swiper-slide">
                   <img
-                    src="//img.youtube.com/vi/Vi5D6FKhRmo/mqdefault.jpg"
-                    alt="video from youtube"
-                    class="youtube-img"
-                  />
-                  <i class="fab fa-youtube"></i>
+                  src="//img.youtube.com/vi/NOhDysLnTvY/mqdefault.jpg"
+                  alt="video from youtube"
+                  class="youtube-img"
+                />
+                <i class="fab fa-youtube"></i>
                 </div>
-                <div class="item" onclick="changeActiveElementImg(this)">
+                <div class="swiper-slide">
                   <img
-                    src="//img.youtube.com/vi/NOhDysLnTvY/mqdefault.jpg"
-                    alt="video from youtube"
-                    class="youtube-img"
-                  />
-                  <i class="fab fa-youtube"></i>
+                  src="//img.youtube.com/vi/aWmJ5DgyWPI/mqdefault.jpg"
+                  alt="video from youtube"
+                  class="youtube-img"
+                />
+                <i class="fab fa-youtube"></i>
                 </div>
-                <div class="item" onclick="changeActiveElementImg(this)">
+                <div class="swiper-slide">
                   <img
-                    src="//img.youtube.com/vi/aWmJ5DgyWPI/mqdefault.jpg"
-                    alt="video from youtube"
-                    class="youtube-img"
-                  />
-                  <i class="fab fa-youtube"></i>
-                </div>
-                <div class="item" onclick="changeActiveElementImg(this)">
-                  <img
-                    src="//img.youtube.com/vi/2OR0OCr6uRE/mqdefault.jpg"
-                    alt="video from youtube"
-                    class="youtube-img"
-                  />
-                  <i class="fab fa-youtube"></i>
+                  src="//img.youtube.com/vi/2OR0OCr6uRE/mqdefault.jpg"
+                  alt="video from youtube"
+                  class="youtube-img"
+                />
+                <i class="fab fa-youtube"></i>
                 </div>
               </div>
-
-              <div class="slider-nav">
-                <div class="slider-nav__container">
-                  <button class="left-arrow">«</button>
-                  <button
-                    class="slider-dot active-dot"
-                    onclick="changeActiveElementDot(this)"
-                  ></button>
-                  <button
-                    class="slider-dot"
-                    onclick="changeActiveElementDot(this)"
-                  ></button>
-                  <button
-                    class="slider-dot"
-                    onclick="changeActiveElementDot(this)"
-                  ></button>
-                  <button
-                    class="slider-dot"
-                    onclick="changeActiveElementDot(this)"
-                  ></button>
-                  <button
-                    class="slider-dot"
-                    onclick="changeActiveElementDot(this)"
-                  ></button>
-                  <button class="right-arrow">»</button>
-                </div>
-              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
           </div>
         </div>
@@ -721,6 +697,8 @@
                     <option value="10:30"></option>
                     <option value="11:00"></option>
                     <option value="11:30"></option>
+                    <option value="12:00"></option>
+                    <option value="12:30"></option>
                     <option value="13:00"></option>
                     <option value="13:30"></option>
                     <option value="14:00"></option>
@@ -1028,13 +1006,15 @@
           </div>
         </div>
       </footer>
-    <script src=" js/gallery.js" defer></script>
+      <script src=" js/gallery.js" defer></script>
       <script src=" js/welcome.js" async></script>
       <script src=" js/header.js" async></script>
       <script src=" js/explore.js" async></script>
       <script src=" js/tickets.js" async></script>
-      <script src=" js/video.js"></script>
-      <script src=" js/video__slider.js"></script>
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+      <script src="https://www.youtube.com/iframe_api"></script>
+      <script src=" js/video.js" defer></script>
+      <script src=" js/video__slider.js" defer></script>
 
 
       <script
