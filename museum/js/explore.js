@@ -7,11 +7,12 @@ let pos = exploreSlider.getBoundingClientRect();
 let touchStart = 0;
 let touchEnd = 0;
 function resizeExplore() {
-  exploreRange.firstElementChild.style.height = `${exploreSlider.clientHeight}px`;
-  exploreRange.style.height = `${afterImg.clientHeight}px`;
+ 
   afterImg.style.clip = `rect(0,${afterImg.clientWidth / 1.65}px,${
     exploreSlider.clientHeight
   }px,0)`;
+  exploreRange.firstElementChild.style.height = `${exploreSlider.clientHeight}px`;
+  exploreRange.style.height = `${afterImg.clientHeight}px`;
   if (window.innerWidth > 1024) {
     exploreRange.style.left = `${beforeImg.clientWidth / 1.65 - 15}px`;
   } else if (window.innerWidth > 520) {
@@ -108,5 +109,4 @@ exploreSlider.addEventListener("mousemove", posImg);
 exploreRange.addEventListener("mousedown", grabRange);
 exploreRange.addEventListener("mouseup", freeRange);
 exploreRange.addEventListener("touchstart", handleStart, false);
-// document.addEventListener("touchend", handleEnd, false);
 exploreSlider.addEventListener("touchmove", handleMove, false);
