@@ -11,6 +11,7 @@ function resizeExplore() {
   afterImg.style.clip = `rect(0,${afterImg.clientWidth / 1.65}px,${
     exploreSlider.clientHeight
   }px,0)`;
+  console.log(exploreSlider.clientHeight, afterImg.clientHeight)
   exploreRange.firstElementChild.style.height = `${exploreSlider.clientHeight}px`;
   exploreRange.style.height = `${afterImg.clientHeight}px`;
   if (window.innerWidth > 1024) {
