@@ -2,9 +2,9 @@
 Museum Louvre
 Deploy: https://museumlouvre.netlify.app
 
-This pet project represents the website of the famous museum in Paris - the Louvre.
+This project represents the website of the famous museum in Paris - the Louvre.
 
-Used technologies: html, scss, javaScript, mapbox.api, swipper.js.
+Used technologies: HTML, scss, javaScript, mapbox.api, swipper.js.
 Adaptive.
 
 ## Header
