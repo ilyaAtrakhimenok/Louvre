@@ -1,0 +1,274 @@
+@import "mixins.scss";
+
+.welcome {
+  background-color: $black;
+}
+.main .welcome {
+  padding-top: 0;
+  padding-bottom: 60px;
+}
+.welcome-inner {
+  @include disableSelection;
+  position: relative;
+  height: 750px;
+  padding-top: 150px;
+  .img-wrapper {
+    position: absolute;
+    width: 1000px;
+    height: 750px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    bottom: 0;
+    right: 0;
+  }
+  .img-wrapper:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 50px 0 100px 10px black;
+    top: 0;
+    left: 0;
+    z-index: 1; /* You can use higher to ensure that it stays on top */
+  }
+  .welcome__img-slider {
+    position: absolute;
+    display:flex;
+    width: 100%;
+    height: 100%;
+  }
+  .welcome__img {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  .welcome__text {
+    position: relative;
+    z-index: 10;
+    display: block;
+  }
+  .welcome__title {
+    @include font("Forum", 80px, 90px, $white);
+    margin-bottom: 25px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+  .welcome__subtitle {
+    @include font("Roboto", 28px, 33px, $white, 300);
+    margin-bottom: 75px;
+    letter-spacing: 2px;
+  }
+  .welcome-btn {
+    @include font("Roboto", 22px, 75px, $white, 300);
+    display: block;
+    height: 75px;
+    width: 360px;
+    background-color: $crimson;
+    border-radius: 10px;
+    text-align: center;
+
+    &:hover {
+      background-color: $gold;
+      transition-duration: 0.1s;
+    }
+  }
+  .welcome__slider {
+    position: absolute;
+    right: 0;
+    bottom: -60px;
+    padding: 50px 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    width: 600px;
+    background-color: $black;
+    z-index: 2;
+    .welcome__slider-counter {
+      @include font("Roboto", 22px, 40px, $white);
+    }
+    .squares {
+      width: 180px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .slider-square {
+      width: 16px;
+      height: 16px;
+      background-color: $white;
+      cursor: pointer;
+      &:hover:not(.active-square) {
+        background-color: $gold;
+      }
+    }
+    .active-square {
+      background-color: #d2b183;
+    }
+    .arrows {
+      width: auto;
+    }
+    .welcome__arrow-left,
+    .welcome__arrow-right {
+      display: inline-block;
+      width: 30px;
+      height: 8px;
+      font-size: 25px;
+      color: $white;
+      &:hover {
+        cursor: pointer;
+        color: $gold;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .welcome-inner {
+    height: 525px;
+    padding-top: 50px;
+    .img-wrapper {
+      width: 700px;
+      height: 525px;
+    }
+    .img-wrapper:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      box-shadow: inset 50px 0 100px 10px black;
+      top: 0;
+      left: 0;
+      z-index: 1; /* You can use higher to ensure that it stays on top */
+    }
+    .welcome__text {
+      .welcome__title {
+        @include font("Forum", 50px, 90px, $white);
+      }
+      .welcome__subtitle {
+        @include font("Roboto", 24px, 28px, $white, 300);
+        margin-bottom: 50px;
+      }
+      .welcome-btn {
+        @include font("Roboto", 20px, 60px, $white, 300);
+        height: 60px;
+        width: 300px;
+        letter-spacing: 2px;
+      }
+    }
+    .welcome__slider {
+      padding: 40px 75px 40px 225px;
+      width: 700px;
+
+      .welcome__slider-counter {
+        @include font("Roboto", 20px, 40px, $white);
+      }
+      .squares {
+        width: 160px;
+      }
+      .slider-square {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main .welcome {
+    padding: 0;
+  }
+  .welcome-inner {
+    position: relative;
+    height: auto;
+    padding-top: 0;
+    .img-wrapper {
+      width: 100%;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .img-wrapper:after {
+      display: none;
+    }
+    .welcome__img-slider {
+      position: absolute;
+      display: flex;
+    }
+    .welcome__img {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .welcome__img {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .welcome__text {
+      text-align: center;
+      .welcome__title {
+        @include font("Forum", 40px, 60px, $white);
+      }
+      .welcome__subtitle {
+        @include font("Roboto", 20px, 24px, $white, 300);
+      }
+      .welcome-btn {
+        display: none;
+      }
+    }
+    .welcome__slider {
+      position: static;
+      padding: 0;
+      width: 100%;
+      justify-content: center;
+      height: 100px;
+      .welcome__slider-counter {
+        @include font("Roboto", 20px, 40px, $white);
+      }
+      .squares {
+        width: 140px;
+        margin-left: 45px;
+        margin-right: 45px;
+      }
+      .slider-square {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .welcome-inner {
+    padding-top: 0px;
+    .welcome__text {
+      .welcome__title {
+        @include font("Forum", 28px, 40px, $white);
+      }
+      .welcome__subtitle {
+        @include font("Roboto", 16px, 19px, $white, 300);
+      }
+    }
+    .welcome__slider {
+      height: auto;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      .welcome__slider-counter {
+        @include font("Roboto", 16px, 16px, $white);
+      }
+      .squares {
+        width: 75px;
+        margin-left: 25px;
+        margin-right: 25px;
+      }
+      .slider-square {
+        width: 7px;
+        height: 7px;
+      }
+      .welcome__arrow-left,
+      .welcome__arrow-right {
+        width: 20px;
+        font-size: 15px;
+      }
+    }
+  }
+}

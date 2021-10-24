@@ -1,0 +1,102 @@
+@import "mixins.scss";
+@import "header.scss";
+@import "welcome.scss";
+@import "visiting.scss";
+@import "explore.scss";
+@import "tickets.scss";
+@import "video.scss";
+@import "contacts.scss";
+@import "gallery.scss";
+@import "form.scss";
+@import "footer.scss";
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+.wrapper {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+.title {
+  @include font("Forum", 80px, 90px, $gold);
+  position: relative;
+  padding-bottom: 100px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 75px;
+  height: 3px;
+  background-color: $crimson;
+}
+.parallax {
+  /* The image used */
+  background-image: url("../assets/img/parallax.jpg");
+
+  /* Full height */
+  /* Set a specific height */
+  height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (max-width: 1024px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .title {
+    @include font("Forum", 50px, 75px, $gold);
+    padding-bottom: 80px;
+  }
+  .title:after {
+    bottom: 60px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    height: 300px;
+  }
+  .section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .title {
+    @include font("Forum", 40px, 60px, $gold);
+    padding-bottom: 60px;
+  }
+  .title:after {
+    bottom: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  .parallax {
+    height: 200px;
+  }
+  .title {
+    @include font("Forum", 28px, 40px, $gold);
+  }
+}

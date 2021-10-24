@@ -1,0 +1,153 @@
+@import "mixins.scss";
+
+.visiting-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  grid-column-gap: 60px;
+  grid-row-gap: 75px;
+  grid-auto-flow: row;
+}
+.visiting__card {
+  color: black;
+  overflow: hidden;
+  .visiting__img {
+    max-width: 100%;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+      transition-duration: 0.6s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+  .visiting__card-name {
+    @include font("Forum", 32px, 35px, black);
+    position: relative;
+    margin-top: 25px;
+    padding-bottom: 20px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background-color: $crimson;
+      transition-duration: 0.6s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+  .visiting__card-subscibtion {
+    @include font("Roboto", 22px, 32px, black, 200);
+    font-family: "Roboto", sans-serif;
+    span {
+      font-size: 18px;
+      line-height: 21px;
+    }
+  }
+  &:hover {
+    .visiting__card-name::after {
+      width: 99%;
+    }
+    .visiting__img {
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .visiting-inner {
+    padding-left: 100px;
+    padding-right: 80px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 80px;
+    grid-row-gap: 70px;
+  }
+  .visiting__card {
+    max-width: 330px;
+    .visiting__card-name {
+      @include font("Forum", 28px, 31px, black);
+      letter-spacing: 3px;
+      &::after {
+        bottom: 10px;
+      }
+    }
+    .colonnade-name {
+      @include font("Forum", 24px, 28px, black);
+    }
+    .visiting__card-subscibtion {
+      @include font("Roboto", 20px, 24px, black, 200);
+      font-family: "Roboto", sans-serif;
+      span {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    .visiting {
+      padding-bottom: 80px;
+    }
+  }
+  .visiting-inner {
+    padding-left: 50px;
+    padding-right: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 55px;
+    grid-row-gap: 40px;
+  }
+  .visiting__card {
+    max-width: 280px;
+    .visiting__card-name {
+      @include font("Forum", 22px, 24px, black);
+      &::after {
+        bottom: 10px;
+      }
+    }
+    .visiting__card-subscibtion {
+      @include font("Roboto", 18px, 21px, black, 200);
+      font-family: "Roboto", sans-serif;
+      span {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+}
+@media (max-width: 570px) {
+  .main {
+    .visiting {
+      padding-bottom: 40px;
+    }
+  }
+  .visiting-inner {
+    padding-left: 12%;
+    padding-right: 10%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 40px;
+  }
+  .visiting__card {
+    .visiting__card-name {
+      @include font("Forum", 18px, 20px, black);
+      &::after {
+        bottom: 10px;
+      }
+    }
+    .visiting__card-subscibtion {
+      @include font("Roboto", 16px, 19px, black, 200);
+      font-family: "Roboto", sans-serif;
+      span {
+        display: block;
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+}
