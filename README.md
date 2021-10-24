@@ -44,7 +44,7 @@ Js control slowly appearance of pictures.
 ## Tickets
 If you choose something on main page it will be changed in form.
 Cost depends on tickets type. Total and tickets' cost are changed automaticlly.
-Each input is checked with validation after click on button book(exept data and time, they are checked immediatly.
+Each input is checked with validation after click on button book(exept data and time, they are checked immediatly).
 After successful form comlete the corresponding message will appear on the screen.
 ## Contacts
 Used mapbox.api(style and marks).
